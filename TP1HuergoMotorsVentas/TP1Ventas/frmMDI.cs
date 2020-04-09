@@ -17,12 +17,12 @@ namespace TP1Ventas
             InitializeComponent();
         }
 
+        //Se ejecuta cuando se hace click en cualquier ABM
         private void commonButtons_Click(object sender, EventArgs e)
         {
-            
             using (frmVehiculos form = new frmVehiculos())
             {
-                
+                //Cambia la variable que se usa para definir la tabla que se muestra 
                 form.Table = (sender as ToolStripItem).Text;
                 form.ShowDialog();
             }

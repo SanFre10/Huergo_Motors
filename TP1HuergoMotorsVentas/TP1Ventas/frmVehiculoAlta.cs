@@ -9,10 +9,9 @@ using System.Windows.Forms;
 
 namespace TP1Ventas
 {
-    public partial class frmVehiculoAlta: Form
+    public partial class frmVehiculoAlta : Form
     {
         public int IdVehiculo { get; set; }
-
         public frmVehiculoAlta()
         {
             InitializeComponent();
@@ -22,19 +21,19 @@ namespace TP1Ventas
         {
             try
             {
-                DataTable dt = new DataTable();
+                    DataTable dt = new DataTable();
 
-                dt = SQLHelper.ObtenerDataTable("SELECT * FROM Vehiculos WHERE Id=" + IdVehiculo);
+                    dt = SQLHelper.ObtenerDataTable($"SELECT * FROM vehiculos WHERE Id=" + IdVehiculo);
 
-                if (dt.Rows.Count == 1)
-                {
-                    txId.Text = Convert.ToString(dt.Rows[0]["Id"]);
-                    txModelo.Text = Convert.ToString(dt.Rows[0]["Modelo"]);
-                    txTipo.Text = Convert.ToString(dt.Rows[0]["Tipo"]);
-                    nuPrecioVenta.Value = Convert.ToDecimal(dt.Rows[0]["PrecioVenta"]);
-                    nuStockDisponible.Value = Convert.ToDecimal(dt.Rows[0]["StockDisponible"]);
+                    if (dt.Rows.Count == 1)
+                    {
+                        txId.Text = Convert.ToString(dt.Rows[0]["Id"]);
+                        txModelo.Text = Convert.ToString(dt.Rows[0]["Modelo"]);
+                        txTipo.Text = Convert.ToString(dt.Rows[0]["Tipo"]);
+                        nuPrecioVenta.Value = Convert.ToDecimal(dt.Rows[0]["PrecioVenta"]);
+                        nuStockDisponible.Value = Convert.ToDecimal(dt.Rows[0]["StockDisponible"]);
+                    }
                 }
-            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

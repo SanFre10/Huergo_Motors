@@ -26,6 +26,7 @@ namespace TP1Ventas
 
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
+            lbltabla.Text = Table;
             Buscar();
         }
 
@@ -38,12 +39,37 @@ namespace TP1Ventas
 
         private void Buscar()
         {
+            Table = Table.Replace('í', 'i').ToLower();
+ 
             DataTable dt = new DataTable();
+
+            string[] campos = {"","","","",""};
 
             //foreach (ref readonly var item in Campo[Table]{
             //    query += item
             //}
-            string query = $"SELECT * FROM {Table.Replace('í', 'i')}";
+            foreach (KeyValuePair<string, string[]> item in Campo)
+            {
+                if (Table == (item.Key).ToLower())
+                {
+                    for(int i = 0; i < item.Value.Count() ; i++)
+                    {
+                        campos[i] = item.Value[i];
+                    }
+                }
+
+
+            }
+            string query = $"SELECT * FROM {Table} " +
+                $"WHERE {campos[0]} LIKE '%{txFiltro.Text}%' " +
+                $"OR {campos[1]} LIKE '%{txFiltro.Text}%'" +
+                $"OR {campos[2]} LIKE '%{txFiltro.Text}%' " +
+                $"OR {campos[3]} LIKE '%{txFiltro.Text}%' ";
+
+            if (campos[4] != "")
+            {
+                query += $"OR {campos[4]} LIKE '%{txFiltro.Text}%' ";
+            }
 
 
             dt = SQLHelper.ObtenerDataTable(query);

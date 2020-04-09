@@ -35,13 +35,14 @@
             this.gvArticulos = new System.Windows.Forms.DataGridView();
             this.btBuscar = new System.Windows.Forms.Button();
             this.txFiltro = new System.Windows.Forms.TextBox();
+            this.lbltabla = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvArticulos)).BeginInit();
             this.SuspendLayout();
             // 
             // btEliminar
             // 
             this.btEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btEliminar.Location = new System.Drawing.Point(462, 320);
+            this.btEliminar.Location = new System.Drawing.Point(682, 475);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(75, 23);
             this.btEliminar.TabIndex = 11;
@@ -52,7 +53,7 @@
             // btAlta
             // 
             this.btAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAlta.Location = new System.Drawing.Point(300, 320);
+            this.btAlta.Location = new System.Drawing.Point(520, 475);
             this.btAlta.Name = "btAlta";
             this.btAlta.Size = new System.Drawing.Size(75, 23);
             this.btAlta.TabIndex = 10;
@@ -63,7 +64,7 @@
             // btModificar
             // 
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btModificar.Location = new System.Drawing.Point(381, 320);
+            this.btModificar.Location = new System.Drawing.Point(601, 475);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(75, 23);
             this.btModificar.TabIndex = 9;
@@ -80,16 +81,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvArticulos.Location = new System.Drawing.Point(12, 39);
+            this.gvArticulos.Location = new System.Drawing.Point(12, 114);
             this.gvArticulos.Name = "gvArticulos";
             this.gvArticulos.ReadOnly = true;
             this.gvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvArticulos.Size = new System.Drawing.Size(525, 275);
+            this.gvArticulos.Size = new System.Drawing.Size(745, 355);
             this.gvArticulos.TabIndex = 8;
             // 
             // btBuscar
             // 
-            this.btBuscar.Location = new System.Drawing.Point(237, 10);
+            this.btBuscar.Location = new System.Drawing.Point(470, 86);
             this.btBuscar.Name = "btBuscar";
             this.btBuscar.Size = new System.Drawing.Size(75, 23);
             this.btBuscar.TabIndex = 7;
@@ -99,16 +100,26 @@
             // 
             // txFiltro
             // 
-            this.txFiltro.Location = new System.Drawing.Point(12, 12);
+            this.txFiltro.Location = new System.Drawing.Point(245, 88);
             this.txFiltro.Name = "txFiltro";
             this.txFiltro.Size = new System.Drawing.Size(219, 20);
             this.txFiltro.TabIndex = 6;
+            // 
+            // lbltabla
+            // 
+            this.lbltabla.AutoSize = true;
+            this.lbltabla.Location = new System.Drawing.Point(355, 9);
+            this.lbltabla.Name = "lbltabla";
+            this.lbltabla.Size = new System.Drawing.Size(34, 13);
+            this.lbltabla.TabIndex = 12;
+            this.lbltabla.Text = "Tabla";
             // 
             // frmVehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 355);
+            this.ClientSize = new System.Drawing.Size(769, 510);
+            this.Controls.Add(this.lbltabla);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btAlta);
             this.Controls.Add(this.btModificar);
@@ -119,7 +130,7 @@
             this.MinimizeBox = false;
             this.Name = "frmVehiculos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Vehículos - Búsqueda";
+            this.Text = "Búsqueda";
             this.Load += new System.EventHandler(this.frmVehiculos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvArticulos)).EndInit();
             this.ResumeLayout(false);
@@ -135,5 +146,6 @@
         private System.Windows.Forms.DataGridView gvArticulos;
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.Label lbltabla;
     }
 }
