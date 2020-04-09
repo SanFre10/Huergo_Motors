@@ -1,0 +1,12 @@
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.exe
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.pdb
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmControlesEjemplo.resources
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmMDI.resources
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmVehiculoAlta.resources
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmVehiculos.resources
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.Properties.Resources.resources
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.GenerateResource.cache
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.exe
+C:\Users\santi\OneDrive\Escritorio\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.pdb
