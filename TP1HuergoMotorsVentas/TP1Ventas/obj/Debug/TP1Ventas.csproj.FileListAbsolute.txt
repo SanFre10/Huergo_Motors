@@ -22,3 +22,27 @@ C:\Users\santi\OneDrive\Escritorio\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas
 C:\Users\santi\OneDrive\Escritorio\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.CoreCompileInputs.cache
 C:\Users\santi\OneDrive\Escritorio\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.exe
 C:\Users\santi\OneDrive\Escritorio\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.pdb
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.exe
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.pdb
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csprojAssemblyReference.cache
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmControlesEjemplo.resources
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmMDI.resources
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.Properties.Resources.resources
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.GenerateResource.cache
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.CoreCompileInputs.cache
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.exe
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.pdb
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmAlta.resources
+D:\Proyectos\GitRepositories\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmTablas.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.exe
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\bin\Debug\TP1Ventas.pdb
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmControlesEjemplo.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmMDI.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmAlta.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.frmTablas.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.Properties.Resources.resources
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.GenerateResource.cache
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.csproj.CoreCompileInputs.cache
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.exe
+C:\Users\santi\OneDrive\Escritorio\DB cine\Huergo_Motors\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas\obj\Debug\TP1Ventas.pdb

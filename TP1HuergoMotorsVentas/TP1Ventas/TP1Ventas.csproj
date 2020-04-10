@@ -56,17 +56,17 @@
     <Compile Include="frmMDI.Designer.cs">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVehiculoAlta.cs">
+    <Compile Include="frmAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVehiculoAlta.Designer.cs">
-      <DependentUpon>frmVehiculoAlta.cs</DependentUpon>
+    <Compile Include="frmAlta.Designer.cs">
+      <DependentUpon>frmAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVehiculos.cs">
+    <Compile Include="frmTablas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVehiculos.Designer.cs">
-      <DependentUpon>frmVehiculos.cs</DependentUpon>
+    <Compile Include="frmTablas.Designer.cs">
+      <DependentUpon>frmTablas.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,11 +77,11 @@
     <EmbeddedResource Include="frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVehiculoAlta.resx">
-      <DependentUpon>frmVehiculoAlta.cs</DependentUpon>
+    <EmbeddedResource Include="frmAlta.resx">
+      <DependentUpon>frmAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVehiculos.resx">
-      <DependentUpon>frmVehiculos.cs</DependentUpon>
+    <EmbeddedResource Include="frmTablas.resx">
+      <DependentUpon>frmTablas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
