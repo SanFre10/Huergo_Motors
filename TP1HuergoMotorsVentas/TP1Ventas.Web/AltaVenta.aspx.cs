@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using TP1VentasDTOs;
 using TP1VentasNegocio;
@@ -157,25 +154,21 @@ namespace TP1Ventas.Web
                 nombres = (List<string>)Session["Nombres"];
 
                 List<ClientesDTO> dtosCliente = (List<ClientesDTO>)Session["dtosClientes"];
-                
                 List<AccesoriosDTO> dtosAccesorios = AccesoriosNegocio.BuscarPorNombre(nombres);
                 List<VehiculosDTO> dtosVehiculos = (List<VehiculosDTO>)Session["dtosVehiculos"];
                 List<VendedoresDTO> dtosVendedores = (List<VendedoresDTO>)Session["dtosVendedores"];
-                List<int> IDs = new List<int>();
 
-                IDs.Add(VentasNegocio.ProximoIdVentas());
-                IDs.Add(dtosVehiculos[ddModelo.SelectedIndex].Id);
-                IDs.Add(dtosCliente[ddClientes.SelectedIndex].Id);
-                IDs.Add(dtosVendedores[ddVendedores.SelectedIndex].Id);
-                IDs.Add(VentaAccesorioNegocio.ProximoIdVentaAccesorios());
 
+                int IdVehiculo = dtosVehiculos[ddModelo.SelectedIndex].Id;
+                int IdCliente = dtosCliente[ddClientes.SelectedIndex].Id;
+                int IdVendedor = dtosVendedores[ddVendedores.SelectedIndex].Id;
                 int stock = dtosVehiculos[ddModelo.SelectedIndex].StockDisponible - 1;
                 string obs = txObservaciones.Text;
                 decimal tot = Convert.ToDecimal(txTotal.Text);
 
-                lblError.Text = (VentasNegocio.ExecTransaction(IDs, dtosAccesorios, obs, tot, stock));
+                lblError.Text = (VentasNegocio.ExecTransaction(IdVehiculo,IdCliente,IdVendedor, dtosAccesorios, obs, tot, stock));
 
-
+                Response.Redirect("Home.aspx");
             }
             catch (Exception ex)
             {

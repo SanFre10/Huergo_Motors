@@ -11,7 +11,7 @@ C:\Users\santi\OneDrive\Escritorio\TP1_V5_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1Ven
 C:\Users\santi\OneDrive\Escritorio\TP1_V5_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.dll
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.pdb
-C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csprojAssemblyReference.cache
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csproj.CoreCompileInputs.cache
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.dll
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb
+C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csprojAssemblyReference.cache

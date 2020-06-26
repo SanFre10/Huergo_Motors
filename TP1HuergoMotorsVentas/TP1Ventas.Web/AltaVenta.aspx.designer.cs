@@ -87,15 +87,6 @@ namespace TP1Ventas.Web
         protected global::System.Web.UI.WebControls.TextBox txSucursal;
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// lblModelo control.
         /// </summary>
         /// <remarks>
@@ -166,15 +157,6 @@ namespace TP1Ventas.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList cbAccesorios;
-
-        /// <summary>
-        /// Label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label10;
 
         /// <summary>
         /// Label5 control.

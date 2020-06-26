@@ -1,14 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 using TP1VentasDTOs;
-using System.Reflection;
 
 namespace TP1Ventas
 {
@@ -28,23 +23,22 @@ namespace TP1Ventas
         {
             try
             {
-                string query = $"SELECT Ventas.Id,Ventas.Fecha,Clientes.Nombre as Cliente,Vehiculos.Modelo as Vehiculo,Vendedores.Nombre + ' ' + Vendedores.Apellido as Vendedor, Ventas.Observaciones,Ventas.Total FROM VENTAS LEFT JOIN Clientes ON Ventas.IdCliente = Clientes.Id " +
-                    $"LEFT JOIN Vehiculos ON Ventas.IdVehiculo = Vehiculos.Id " +
-                    $"LEFT JOIN Vendedores ON Ventas.IdVendedor = Vendedores.Id WHERE ";
+                string selected = "";
+               
                 if (rbCliente.Checked)
                 {
-                    query += $" Clientes.Nombre LIKE '%{txFiltro.Text}%' OR ";
+                    selected = "Cliente";
                 }
                 else if (rbVehiculo.Checked)
                 {
-                    query += $" Vehiculos.Modelo LIKE '%{txFiltro.Text}%' OR ";
+                    selected = "Vehiculo";
                 }
                 else if (rbVendedor.Checked)
                 {
-                    query += $" Vendedores.Nombre LIKE '%{txFiltro.Text}%' OR Vendedores.Apellido LIKE '%{txFiltro.Text}%' OR";
+                    selected = "Vendedor";
                 }
-                query += $" Fecha between '{dtpInicio.Value:yyyy-MM-dd}' and '{dtpFin.Value:yyyy-MM-dd}' ";
-                List<VentasDTO> dtoVentas = TP1VentasNegocio.VentasNegocio.MostrarVentas(query);
+                
+                List<VentasDTO> dtoVentas = TP1VentasNegocio.VentasNegocio.ObtenerConFiltro(txFiltro.Text, selected, dtpInicio.Value.ToString("yyyy-MM-dd"), dtpFin.Value.ToString("yyyy-MM-dd"));
                 if (dtoVentas.Count > 0)
                 {
                     this.dtgVentas.DataSource = dtoVentas;
@@ -62,9 +56,7 @@ namespace TP1Ventas
 
         private void CargarTablaEntera()
         {
-            List<VentasDTO> dtoVentas = TP1VentasNegocio.VentasNegocio.MostrarVentas($"SELECT Ventas.Id,Ventas.Fecha,Clientes.Nombre as Cliente,Vehiculos.Modelo as Vehiculo,Vendedores.Nombre + ' ' + Vendedores.Apellido as Vendedor, Ventas.Observaciones,Ventas.Total FROM VENTAS LEFT JOIN Clientes ON Ventas.IdCliente = Clientes.Id " +
-                    $"LEFT JOIN Vehiculos ON Ventas.IdVehiculo = Vehiculos.Id " +
-                    $"LEFT JOIN Vendedores ON Ventas.IdVendedor = Vendedores.Id");
+            List<VentasDTO> dtoVentas = TP1VentasNegocio.VentasNegocio.MostrarVentas();
 
             dtgVentas.DataSource = dtoVentas;
         }
@@ -90,9 +82,9 @@ namespace TP1Ventas
                         foreach (VentasDTO tmp in source)
                         {
                             string fecha = tmp.Fecha.ToString("d/M/yyyy");
-                            Sw.WriteLine(Convert.ToString(tmp.Id) + ", " + fecha + ", " + Convert.ToString(tmp.Vehiculo) + ", " +
-                                Convert.ToString(tmp.Cliente) + ", " + Convert.ToString(tmp.Vendedor) + ", " +
-                                Convert.ToString(tmp.Observaciones) + ", " + Convert.ToString(tmp.Total));
+                            Sw.WriteLine("'" + tmp.Id.ToString(CultureInfo.InvariantCulture) + "','" + fecha + "','" + tmp.Vehiculo.ToString(CultureInfo.InvariantCulture) + "','" +
+                           tmp.Cliente.ToString(CultureInfo.InvariantCulture) + "','" + tmp.Vendedor.ToString(CultureInfo.InvariantCulture) + "','" +
+                           tmp.Observaciones.ToString(CultureInfo.InvariantCulture) + "','" + tmp.Total.ToString(CultureInfo.InvariantCulture) + "'");
                         }
                         //Cierra el Writer
                         Sw.Close();
@@ -101,38 +93,6 @@ namespace TP1Ventas
 
                     }
                 }
-                List<ConsultaDTO> dt = (List<ConsultaDTO>)Session["dt"]; 
-
-                List<string> lineas = new List<string>(); 
-                string header = ""; 
-                string row = ""; 
-                string row = ""; 
-                foreach (PropertyInfo prop in dt[0].GetType().GetProperties()) 
-                { 
-                    header += """ + prop.Name + """ + ","; 
-                }
-                lineas.Add(header); 
-                foreach (ConsultaDTO dr in dt)
-                {
-                    foreach (PropertyInfo prop in dr.GetType().GetProperties())
-                    {
-                        if (prop.GetValue(dr, null) is string){       
-                            row += """ + prop.GetValue(dr, null) + """ + ","; 
-                        }                
-                        else           
-                        {                      
-                            row += prop.GetValue(dr, null) + ",";       
-                        }                    
-                    }                    
-                    lineas.Add(row);           
-                    row = "";                
-                }                 
-                string result = string.Join("\n", lineas.ToArray());    
-                Response.Clear();            
-                Response.ContentType = "text/csv";            
-                Response.AddHeader("Content-Disposition", "attachment;filename=ventas.csv");            
-                Response.Write(result);                
-                Response.End();
             }
 
             catch (Exception ex)

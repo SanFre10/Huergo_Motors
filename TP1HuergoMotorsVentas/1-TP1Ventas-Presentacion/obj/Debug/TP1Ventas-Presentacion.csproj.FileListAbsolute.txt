@@ -22,3 +22,6 @@ C:\Users\Olivares\Desktop\TP1_V4_EQ6\1-TP1Ventas-Presentacion\obj\Debug\TP1Venta
 C:\Users\santi\OneDrive\Escritorio\TP1_V5_EQ6\1-TP1Ventas-Presentacion\obj\Debug\TP1Ventas-Presentacion.csprojAssemblyReference.cache
 C:\Users\santi\OneDrive\Escritorio\TP1_V5_EQ6\1-TP1Ventas-Presentacion\obj\Debug\1-TP1Ventas-Presentacion.exe
 C:\Users\santi\OneDrive\Escritorio\TP1_V5_EQ6\1-TP1Ventas-Presentacion\obj\Debug\1-TP1Ventas-Presentacion.pdb
+C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\1-TP1Ventas-Presentacion\obj\Debug\TP1Ventas-Presentacion.csprojAssemblyReference.cache
+C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\1-TP1Ventas-Presentacion\obj\Debug\1-TP1Ventas-Presentacion.exe
+C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\1-TP1Ventas-Presentacion\obj\Debug\1-TP1Ventas-Presentacion.pdb

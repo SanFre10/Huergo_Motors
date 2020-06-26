@@ -3,27 +3,26 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head runat="server">
-
     <title>TP2 - Login</title>
+    <link href="Style/Style.css" rel="stylesheet" />
 </head>
-<body>
-    <form id="form1" runat="server">
 
-        <br />
-        <br />
-        <h4>Iniciar Sesión</h4>
-
-        <asp:Label ID="Label1" runat="server" Text="Nombre de Usuario"></asp:Label>
-        <asp:TextBox ID="txNombreUsuario" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="Contraseña"></asp:Label>
-        <asp:TextBox ID="txContraseña" runat="server"></asp:TextBox>
-        <br />
-        <asp:Button ID="btIniciarSesion" runat="server" OnClick="btIniciarSesion_Click" Text="Iniciar Sesión" />
-        <br />
-        <asp:Label ID="lbMsg" runat="server"></asp:Label>
-
-    </form>
+<body id="index-body">
+    <div class="login-container">
+        <h2 class="h2">Login</h2>
+        <div class="form-container">
+            <form id="form1" runat="server">
+                <p id="user-label" class="p">Username</p>
+                <asp:TextBox ID="txNombreUsuario" runat="server" CssClass="login-input"></asp:TextBox>
+                <p id="pass-label" class="p">Password</p>
+                <asp:TextBox ID="txContraseña" runat="server" CssClass="login-input"></asp:TextBox>
+                <asp:Label ID="lbMsg" class="error" runat="server"></asp:Label>
+                <br>
+            </div>
+                <asp:Button ID="btIniciarSesion" runat="server" OnClick="btIniciarSesion_Click" Text="Iniciar Sesión" CssClass="button1" />
+        </form>
+    </div>
 </body>
 </html>

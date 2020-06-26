@@ -49,7 +49,7 @@ namespace TP1VentasDatos
             DataTable dt = SQLHelper.ObtenerDataTable(query);
             return Funciones.Ventas_DataTable_a_DTO(dt);
         }
-        public static string ExecTransaction(List<int>IDs, List<AccesoriosDTO> dtosAccesorios,string obs,decimal tot,int stock)
+        public static string ExecTransaction(int IdVehiculo,int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios,string obs,decimal tot,int stock)
         {
             try
             {
@@ -68,9 +68,11 @@ namespace TP1VentasDatos
                             cmd.Transaction = transaction;
                             cmd.Connection = conn;
 
+                            int IdVentas = SQLHelper.ObtenerProximoId("Ventas");
+                            int IdVentasAccesorios = SQLHelper.ObtenerProximoId("VentasAccesorios");
 
                             //Query venta vehiculo
-                            cmd.CommandText = $@"INSERT INTO Ventas (id,Fecha,IdVehiculo,IdCliente,IdVendedor,Observaciones,Total) VALUES ('{IDs[0]}','{DateTime.Now:yyyy-MM-dd}','{IDs[1]}','{IDs[2]}','{IDs[3]}','{obs}','{tot.ToString(System.Globalization.CultureInfo.InvariantCulture)}')";
+                            cmd.CommandText = $@"INSERT INTO Ventas (id,Fecha,IdVehiculo,IdCliente,IdVendedor,Observaciones,Total) VALUES ('{IdVentas}','{DateTime.Now:yyyy-MM-dd}','{IdVehiculo}','{IdCliente}','{IdVendedor}','{obs}','{tot.ToString(System.Globalization.CultureInfo.InvariantCulture)}')";
 
                             cmd.ExecuteNonQuery();
 
@@ -80,15 +82,15 @@ namespace TP1VentasDatos
                                 int idaccesorio = dto.Id;
                                 string precioventa = dto.PrecioVenta.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
-                                cmd.CommandText = $@"INSERT INTO VentasAccesorios (id,idVenta,idAccesorio,Cantidad,PrecioVenta) VALUES ('{IDs[4]}','{IDs[0]}','{idaccesorio}','1','{precioventa}')";
+                                cmd.CommandText = $@"INSERT INTO VentasAccesorios (id,idVenta,idAccesorio,Cantidad,PrecioVenta) VALUES ('{IdVentasAccesorios}','{IdVentas}','{idaccesorio}','1','{precioventa}')";
 
                                 cmd.ExecuteNonQuery();
 
-                                IDs[4]++;
+                                IdVentasAccesorios++;
                             }
                             //Resta 1 al stock del vehiculo
 
-                            cmd.CommandText = $"UPDATE Vehiculos SET StockDisponible = {stock} WHERE id = {IDs[1]}";
+                            cmd.CommandText = $"UPDATE Vehiculos SET StockDisponible = {stock} WHERE id = {IdVehiculo}";
                             cmd.ExecuteNonQuery();
 
                         }

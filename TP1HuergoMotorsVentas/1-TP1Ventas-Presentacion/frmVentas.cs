@@ -154,19 +154,17 @@ namespace TP1Ventas
         {
             try
             {
-                List<int> IDs = new List<int>();
 
-                IDs.Add(TP1VentasNegocio.VentasNegocio.ProximoIdVentas());
-                IDs.Add(dtosVehiculos[cbVehiculos.SelectedIndex].Id);
-                IDs.Add(dtosCliente[cbClientes.SelectedIndex].Id);
-                IDs.Add(dtosVendedores[cbVendedor.SelectedIndex].Id);
-                IDs.Add(TP1VentasNegocio.VentaAccesorioNegocio.ProximoIdVentaAccesorios());
+
+                int IdVehiculo = dtosVehiculos[cbVehiculos.SelectedIndex].Id;
+                int IdCliente = dtosCliente[cbClientes.SelectedIndex].Id;
+                int IdVendedor = dtosVendedores[cbVendedor.SelectedIndex].Id;
                 int stock = dtosVehiculos[cbVehiculos.SelectedIndex].StockDisponible - 1;
                 string obs = txtObservaciones.Text;
                 decimal tot = Convert.ToDecimal(lblTotal.Text);
 
                 MessageBox.Show(TP1VentasNegocio.VentasNegocio.ExecTransaction(
-                    IDs, dtosAccesorios, obs, tot, stock)
+                    IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, stock)
                     , "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

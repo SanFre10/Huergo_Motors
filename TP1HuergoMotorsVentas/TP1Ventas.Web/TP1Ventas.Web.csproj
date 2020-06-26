@@ -69,6 +69,7 @@
     <Content Include="ConsultaVentas.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Style\Style.css" />
     <Content Include="Vehiculos.aspx" />
     <Content Include="VehiculosAlta.aspx" />
     <Content Include="Vendedores.aspx" />

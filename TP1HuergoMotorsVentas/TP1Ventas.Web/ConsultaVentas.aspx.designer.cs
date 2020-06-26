@@ -33,13 +33,13 @@ namespace TP1Ventas.Web
         protected global::System.Web.UI.WebControls.TextBox txFiltro;
 
         /// <summary>
-        /// Label1 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
         /// dtpInicio control.
@@ -51,13 +51,13 @@ namespace TP1Ventas.Web
         protected global::System.Web.UI.WebControls.TextBox dtpInicio;
 
         /// <summary>
-        /// Label2 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
         /// dtpFin control.
@@ -87,15 +87,6 @@ namespace TP1Ventas.Web
         protected global::System.Web.UI.WebControls.Button btncsv;
 
         /// <summary>
-        /// dtgVentas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView dtgVentas;
-
-        /// <summary>
         /// lblError control.
         /// </summary>
         /// <remarks>
@@ -103,5 +94,14 @@ namespace TP1Ventas.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
+        /// dtgVentas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView dtgVentas;
     }
 }

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TP1Ventas.Web {
-    
-    
-    public partial class Login {
-        
+namespace TP1Ventas.Web
+{
+
+
+    public partial class Login
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
@@ -20,16 +22,7 @@ namespace TP1Ventas.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-        
+
         /// <summary>
         /// txNombreUsuario control.
         /// </summary>
@@ -38,16 +31,7 @@ namespace TP1Ventas.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txNombreUsuario;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
+
         /// <summary>
         /// txContraseña control.
         /// </summary>
@@ -56,16 +40,7 @@ namespace TP1Ventas.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txContraseña;
-        
-        /// <summary>
-        /// btIniciarSesion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btIniciarSesion;
-        
+
         /// <summary>
         /// lbMsg control.
         /// </summary>
@@ -74,5 +49,14 @@ namespace TP1Ventas.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbMsg;
+
+        /// <summary>
+        /// btIniciarSesion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btIniciarSesion;
     }
 }
