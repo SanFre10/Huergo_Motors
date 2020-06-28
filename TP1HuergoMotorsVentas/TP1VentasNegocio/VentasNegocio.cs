@@ -22,5 +22,6 @@ namespace TP1VentasNegocio
         {
             return VentasDAO.ObtenerConFiltro(filtro, elegido, inicio, fin);
         }
+
     }
 }

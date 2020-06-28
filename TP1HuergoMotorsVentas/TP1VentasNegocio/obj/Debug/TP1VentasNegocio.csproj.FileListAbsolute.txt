@@ -51,3 +51,14 @@ C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\o
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.csproj.CopyComplete
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.dll
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\TP1VentasNegocio.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\TP1VentasNegocio.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\4-TP1VentasDTOs.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\TP1VentasDatos.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\4-TP1VentasDTOs.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\bin\Debug\TP1VentasDatos.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.csprojAssemblyReference.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.csproj.CoreCompileInputs.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.csproj.CopyComplete
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasNegocio\obj\Debug\TP1VentasNegocio.pdb

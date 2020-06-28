@@ -49,6 +49,17 @@ namespace TP1VentasDatos
             DataTable dt = SQLHelper.ObtenerDataTable(query);
             return Funciones.Ventas_DataTable_a_DTO(dt);
         }
+        public static List<VentasDTO> ObtenerConCliente(int Idcliente)
+        {
+            string query = $"SELECT Ventas.Id,Ventas.Fecha,Clientes.Nombre as Cliente,Vehiculos.Modelo as Vehiculo,Vendedores.Nombre + ' ' + Vendedores.Apellido as Vendedor, Ventas.Observaciones,Ventas.Total " +
+                $"FROM VENTAS " +
+                $"LEFT JOIN Clientes ON Ventas.IdCliente = Clientes.Id " +
+                $"LEFT JOIN Vehiculos ON Ventas.IdVehiculo = Vehiculos.Id " +
+                $"LEFT JOIN Vendedores ON Ventas.IdVendedor = Vendedores.Id WHERE Clientes.Id = {Idcliente}";
+
+            DataTable dt = SQLHelper.ObtenerDataTable(query);
+            return Funciones.Ventas_DataTable_a_DTO(dt);
+        }
         public static string ExecTransaction(int IdVehiculo,int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios,string obs,decimal tot,int stock)
         {
             try

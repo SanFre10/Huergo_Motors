@@ -38,6 +38,13 @@ namespace TP1VentasDatos
                 return Funciones.Clientes_DataTable_a_DTO(dt);
 
         }
+        public static List<ClientesDTO> GetAllClientes()
+        {
+
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Clientes");
+            return Funciones.Clientes_DataTable_a_DTO(dt);
+
+        }
         public static int AgregarClientes(string query)
         {
 

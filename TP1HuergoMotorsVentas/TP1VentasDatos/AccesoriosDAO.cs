@@ -20,6 +20,16 @@ namespace TP1VentasDatos
                 return Funciones.Accesorios_DataTable_a_DTO(dt);
 
         }
+        public static List<AccesoriosDTO> GetAccesoriosByModelo(string filtro)
+        {
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Accesorios WHERE Modelo LIKE {filtro}");
+            return Funciones.Accesorios_DataTable_a_DTO(dt);
+        }
+        public static List<AccesoriosDTO> GetAllAccesorios()
+        {
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Accesorios");
+            return Funciones.Accesorios_DataTable_a_DTO(dt);
+        }
         public static List<string> GetNameAndValue(List<AccesoriosDTO> dtolist)
         {
                 List<string> ret = new List<string>();

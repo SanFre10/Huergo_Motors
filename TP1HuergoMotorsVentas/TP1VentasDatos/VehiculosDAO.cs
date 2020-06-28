@@ -39,6 +39,12 @@ namespace TP1VentasDatos
                 return Funciones.Vehiculos_DataTable_a_DTO(dt);
 
         }
+        public static List<VehiculosDTO> GetAllVehiculos()
+        {
+
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos");
+            return Funciones.Vehiculos_DataTable_a_DTO(dt);
+        }
         public static int AgregarVehiculos(string query)
         {
 

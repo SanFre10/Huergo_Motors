@@ -41,3 +41,12 @@ C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.csproj.CopyComplete
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.dll
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\bin\Debug\TP1VentasDatos.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\bin\Debug\TP1VentasDatos.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\bin\Debug\4-TP1VentasDTOs.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\bin\Debug\4-TP1VentasDTOs.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.csprojAssemblyReference.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.csproj.CoreCompileInputs.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.csproj.CopyComplete
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1VentasDatos\obj\Debug\TP1VentasDatos.pdb
