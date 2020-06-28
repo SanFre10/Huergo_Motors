@@ -15,3 +15,8 @@ C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\TP1Venta
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.dll
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csprojAssemblyReference.cache
+C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.dll
+C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.pdb
+C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csprojAssemblyReference.cache
+C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.dll
+C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb
