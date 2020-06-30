@@ -15,31 +15,36 @@ namespace Services
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // Para permitir que se llame a este servicio web desde un script, usando ASP.NET AJAX, quite la marca de comentario de la línea siguiente. 
-    // [System.Web.Script.Services.ScriptService]
+    //[System.Web.Script.Services.ScriptService]
     public class WebService : System.Web.Services.WebService
     {
         [WebMethod]
-        public static List<AccesoriosDTO> GetAccesoriosByModelo(string filtro)
+        public List<AccesoriosDTO> GetAccesoriosByModelo(string filtro)
         {
             return AccesoriosDAO.GetAccesoriosByModelo(filtro);
         }
-        public static List<AccesoriosDTO> GetAccesorios()
+        [WebMethod]
+        public List<AccesoriosDTO> GetAccesorios()
         {
             return AccesoriosDAO.GetAllAccesorios();
         }
-        public static List<ClientesDTO> GetClientes()
+        [WebMethod]
+        public List<ClientesDTO> GetClientes()
         {
             return ClientesDAO.GetAllClientes();
         }
-        public static List<VehiculosDTO> GetVehiculos()
+        [WebMethod]
+        public List<VehiculosDTO> GetVehiculos()
         {
             return VehiculosDAO.GetAllVehiculos();
         }
-        public static List<VentasDTO> GetVentas(int IdCliente)
+        [WebMethod]
+        public List<VentasDTO> GetVentas(int IdCliente)
         {
             return VentasDAO.ObtenerConCliente(IdCliente);
         }
-        public static string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot, int stock)
+        [WebMethod]
+        public string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot, int stock)
         {
             return VentasDAO.ExecTransaction(IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, stock);
         }

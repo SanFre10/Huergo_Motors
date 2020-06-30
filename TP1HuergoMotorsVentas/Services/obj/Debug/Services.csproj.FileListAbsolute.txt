@@ -111,10 +111,8 @@ D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\roslyn\VBCSComp
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\4-TP1VentasDTOs.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasDatos.dll
-D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasNegocio.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\4-TP1VentasDTOs.pdb
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasDatos.pdb
-D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasNegocio.pdb
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.csprojAssemblyReference.cache
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
