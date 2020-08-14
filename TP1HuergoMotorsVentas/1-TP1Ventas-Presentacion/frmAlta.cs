@@ -8,19 +8,21 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TP1VentasNegocio;
+using System.Reflection;
+using _4_TP1VentasDTOs;
 
 namespace TP1Ventas
 {
     public partial class frmAlta : Form
     {
         public int SelectedID { get; set; }
-        public string currenttable { get; set; }
-        public Dictionary<string,string[]> totaldata { get; set; }
+        public string Currenttable { get; set; }
+        public Dictionary<string,string[]> Totaldata { get; set; }
 
-        public List<VehiculosDTO> Vehiculos;
-        public List<ClientesDTO> Clientes;
-        public List<AccesoriosDTO> Accesorios;
-        public List<VendedoresDTO> Vendedores;
+        public VehiculosDTO Vehiculos;
+        public ClientesDTO Clientes;
+        public AccesoriosDTO Accesorios;
+        public VendedoresDTO Vendedores;
 
 
         public frmAlta()
@@ -28,7 +30,7 @@ namespace TP1Ventas
             InitializeComponent();
         }
 
-        private void frmVehiculoAlta_Load(object sender, EventArgs e)
+        private void FrmVehiculoAlta_Load(object sender, EventArgs e)
         {
             try
             {
@@ -36,9 +38,9 @@ namespace TP1Ventas
                 int actual = 0;
                 foreach (Control ctrl in TLPLabels.Controls)
                 {
-                    if (ctrl.GetType() == typeof(Label) & actual != totaldata[currenttable].Length)
+                    if (ctrl.GetType() == typeof(Label) & actual != Totaldata[Currenttable].Length)
                     {
-                        ctrl.Text = totaldata[currenttable][actual];
+                        ctrl.Text = Totaldata[Currenttable][actual];
                         if (ctrl.Text.Contains("Precio") || ctrl.Text.Contains("Stock"))
                         { ctrl.Tag += "n"; }
                         else { ctrl.Tag += "t"; }
@@ -47,7 +49,7 @@ namespace TP1Ventas
                     }
                 }
 
-                if (currenttable == "vehiculos")
+                if (Currenttable == "vehiculos")
                 {
                     Vehiculos = VehiculosNegocio.MostrarVehiculosPorId(SelectedID);
                     if (SelectedID == 0)
@@ -55,7 +57,7 @@ namespace TP1Ventas
                         txt1.Text = Convert.ToString(VehiculosNegocio.ProximoIdVehiculos());
                     }
                 }
-                else if (currenttable == "accesorios")
+                else if (Currenttable == "accesorios")
                 {
                     Accesorios = AccesoriosNegocio.MostrarAccesoriosPorId(SelectedID);
                     if (SelectedID == 0)
@@ -63,7 +65,7 @@ namespace TP1Ventas
                         txt1.Text = Convert.ToString(AccesoriosNegocio.ProximoIdAccesorios());
                     }
                 }
-                else if (currenttable == "clientes")
+                else if (Currenttable == "clientes")
                 {
                     Clientes = ClientesNegocio.MostrarClientesPorId(SelectedID);
                     if (SelectedID == 0)
@@ -71,7 +73,7 @@ namespace TP1Ventas
                         txt1.Text = Convert.ToString(ClientesNegocio.ProximoIdClientes());
                     }
                 }
-                else if (currenttable == "vendedores")
+                else if (Currenttable == "vendedores")
                 {
                     Vendedores = VendedoresNegocio.MostrarVendedoresPorId(SelectedID);
                     if (SelectedID == 0)
@@ -90,21 +92,21 @@ namespace TP1Ventas
                         if ((ctrl.GetType() == typeof(TextBox) | ctrl.GetType() == typeof(NumericUpDown)) & ctrl.Visible == true)
                         {
                             //Consigue los datos del DTO
-                            if(currenttable == "vehiculos")
+                            if(Currenttable == "vehiculos")
                             {
-                                ctrl.Text = Convert.ToString(Vehiculos[0].GetType().GetProperty(totaldata[currenttable][index]).GetValue(Vehiculos[0], null));
+                                ctrl.Text = Convert.ToString(Vehiculos.GetType().GetProperty(Totaldata[Currenttable][index]).GetValue(Vehiculos, null));
                             }
-                            else if (currenttable == "accesorios")
+                            else if (Currenttable == "accesorios")
                             {
-                                ctrl.Text = Convert.ToString(Accesorios[0].GetType().GetProperty(totaldata[currenttable][index]).GetValue(Accesorios[0], null));
+                                ctrl.Text = Convert.ToString(Accesorios.GetType().GetProperty(Totaldata[Currenttable][index]).GetValue(Accesorios, null));
                             }
-                            else if (currenttable == "clientes")
+                            else if (Currenttable == "clientes")
                             {
-                                ctrl.Text = Convert.ToString(Clientes[0].GetType().GetProperty(totaldata[currenttable][index]).GetValue(Clientes[0], null));
+                                ctrl.Text = Convert.ToString(Clientes.GetType().GetProperty(Totaldata[Currenttable][index]).GetValue(Clientes, null));
                             }
-                            else if (currenttable == "vendedores")
+                            else if (Currenttable == "vendedores")
                             {
-                                ctrl.Text = Convert.ToString(Vendedores[0].GetType().GetProperty(totaldata[currenttable][index]).GetValue(Vendedores[0], null));
+                                ctrl.Text = Convert.ToString(Vendedores.GetType().GetProperty(Totaldata[Currenttable][index]).GetValue(Vendedores, null));
                             }
                             index++;
                         }
@@ -130,100 +132,52 @@ namespace TP1Ventas
         {
             try
             {
-                string[] valores = { "", "", "", "", "" };
-                int index = 0;
-                foreach (Control ctrl in Controls) //Guarda los valores de los controls en una lista
-                {
-                    if (ctrl.Visible == true & ctrl.GetType() == typeof(TextBox))
-                    {
-                        valores[index] = ctrl.Text;
-                        index++;
-                    }
-                    else if (ctrl.Visible == true & ctrl.GetType() == typeof(NumericUpDown))
-                    {
-                        valores[index] = ctrl.Text.ToString(System.Globalization.CultureInfo.InvariantCulture);
-                        index++;
-                    }
-                }
-
-                index = 0;
                 if (SelectedID > 0) //Es una modificacion.
                 {
-                    index = 1;
-                    //Arma el query UPDATE
-                    string update = $"UPDATE {currenttable} SET ";
-                    foreach (Control ctrl in TLPLabels.Controls)
+                    if (Currenttable == "vehiculos")
                     {
-                        if (ctrl.Visible == true && ctrl.Text != "Id")
-                        {
-                            update += $" {ctrl.Text} = '{valores[index].ToString(System.Globalization.CultureInfo.InvariantCulture)}' ,";
-                            index++;
-                        }
+                        VehiculosDTO dto = LlenarDTO<VehiculosDTO>(SelectedID);
+                        VehiculosNegocio.ModificarVehiculosPorDTO(dto);
                     }
-                    update = update.Remove(update.Length - 2);
-                    update += $" WHERE Id = {SelectedID}";
-
-                    if (currenttable == "vehiculos")
+                    else if (Currenttable == "accesorios")
                     {
-                        VehiculosNegocio.ModificarVehiculos(update);
+                        AccesoriosDTO dto = LlenarDTO<AccesoriosDTO>(SelectedID);
+                        AccesoriosNegocio.ModificarAccesoriosPorDTO(dto);
                     }
-                    else if (currenttable == "accesorios")
+                    else if (Currenttable == "clientes")
                     {
-                        AccesoriosNegocio.ModificarAccesorios(update);
+                        ClientesDTO dto = LlenarDTO<ClientesDTO>(SelectedID);
+                        ClientesNegocio.ModificarClientesPorDTO(dto);
                     }
-                    else if (currenttable == "clientes")
+                    else if (Currenttable == "vendedores")
                     {
-                        ClientesNegocio.ModificarClientes(update);
-                    }
-                    else if (currenttable == "vendedores")
-                    {
-                        VendedoresNegocio.ModificarVendedores(update);
+                        VendedoresDTO dto = LlenarDTO<VendedoresDTO>(SelectedID);
+                        VendedoresNegocio.ModificarVendedoresPorDTO(dto);
                     }
 
                     this.Close();
                 }
                 else
                 {
-                    //Arma el query INSERT
-                    string insert = $"INSERT INTO {currenttable} ( ";
-                    foreach (Control ctrl in TLPLabels.Controls)
+                    if (Currenttable == "vehiculos")
                     {
-                        if (ctrl.Visible == true)
-                        {
-                            insert += $" {ctrl.Text} ,";
-                            index++;
-                        }
+                        VehiculosDTO dto = LlenarDTO<VehiculosDTO>(SelectedID);
+                        VehiculosNegocio.AgregarVehiculosPorDTO(dto);
                     }
-                    insert = insert.Remove(insert.Length - 2);
-                    insert += " ) VALUES (";
-                    index = 0;
-                    foreach (string valor in valores)
+                    else if (Currenttable == "accesorios")
                     {
-                        if (valores[index] != "")
-                        {
-                            insert += $" '{valores[index].ToString(System.Globalization.CultureInfo.InvariantCulture)}' ,";
-                            index++;
-                        }
-
+                        AccesoriosDTO dto = LlenarDTO<AccesoriosDTO>(SelectedID);
+                        AccesoriosNegocio.AgregarAccesoriosPorDTO(dto);
                     }
-                    insert = insert.Remove(insert.Length - 2);
-                    insert += " )";
-
-                    if (currenttable == "vehiculos")
+                    else if (Currenttable == "clientes")
                     {
-                        VehiculosNegocio.AgregarVehiculos(insert);
+                        ClientesDTO dto = LlenarDTO<ClientesDTO>(SelectedID);
+                        ClientesNegocio.AgregarClientesPorDTO(dto);
                     }
-                    else if (currenttable == "accesorios")
+                    else if (Currenttable == "vendedores")
                     {
-                        AccesoriosNegocio.AgregarAccesoriosPorDTO(insert);
-                    }
-                    else if (currenttable == "clientes")
-                    {
-                        ClientesNegocio.AgregarClientes(insert);
-                    }
-                    else if (currenttable == "vendedores")
-                    {
-                        VendedoresNegocio.AgregarVendedores(insert);
+                        VendedoresDTO dto = LlenarDTO<VendedoresDTO>(SelectedID);
+                        VendedoresNegocio.AgregarVendedoresPorDTO(dto);
                     }
                     this.Close();
                 }
@@ -237,6 +191,56 @@ namespace TP1Ventas
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+        private T LlenarDTO<T>(int id) where T : DTOBase, new()
+        {
+            string[] valores = { "", "", "", "", ""};
+            int index = 0;
+            foreach (Control ctrl in Controls) //Guarda los valores de los controls en una lista
+            {
+                if (ctrl.Visible == true & ctrl.GetType() == typeof(TextBox))
+                {
+                    valores[index] = ctrl.Text;
+                    index++;
+                }
+                else if (ctrl.Visible == true & ctrl.GetType() == typeof(NumericUpDown))
+                {
+                    valores[index] = ctrl.Text.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                    index++;
+                }
+            }
+
+            T dto = new T();
+            PropertyInfo[] props = dto.GetType().GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            dto.Id = id;
+            foreach (Control ctrl in TLPLabels.Controls)
+            {
+                index = 0;
+                while (index <= valores.Length)
+                {
+                    if (ctrl.Visible == true && ctrl.Text != "Id" && ctrl.Text == props[index].Name)
+                    {
+                        if (props[index].PropertyType == typeof(string))
+                        {
+                            props[index].SetValue(dto, valores[index]);
+                        }
+                        else if(props[index].PropertyType == typeof(decimal))
+                        {
+                            props[index].SetValue(dto, Convert.ToDecimal(valores[index]));
+                        }
+                        else if (props[index].PropertyType == typeof(int))
+                        {
+                            props[index].SetValue(dto, Convert.ToInt32(valores[index]));
+                        }
+                    }
+                    index++;
+                    
+                }
+
+            }
+            return dto;
         }
     }
 }

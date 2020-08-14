@@ -17,35 +17,34 @@ namespace TP1VentasNegocio
         }
         public static List<string> MostrarModeloVehiculos(List<VehiculosDTO> dtolist)
         {
-            return VehiculosDAO.GetModelVehiculos(dtolist);
+            List<string> ret = new List<string>();
+            foreach (VehiculosDTO dto in dtolist)
+            {
+                ret.Add(dto.Modelo);
+            }
+            return ret;
         }
-        public static List <VehiculosDTO> MostrarVehiculosPorId(int id)
+        public static VehiculosDTO MostrarVehiculosPorId(int id)
         {
-            return VehiculosDAO.GetVehiculosById(id);
+            return DAOBase<VehiculosDTO>.Read(id);
         }
-        public static void ModificarVehiculos(string query)
-        {
-            VehiculosDAO.ModificarVehiculos(query);
-        }
+
         public static void ModificarVehiculosPorDTO(VehiculosDTO dto)
         {
-            VehiculosDAO.ModificarVehiculosPorDTO(dto);
+            DAOBase<VehiculosDTO>.Update(dto);
         }
-        public static void AgregarVehiculos(string query)
-        {
-            VehiculosDAO.AgregarVehiculos(query);
-        }
+
         public static void AgregarVehiculosPorDTO(VehiculosDTO dto)
         {
-            VehiculosDAO.AgregarVehiculosPorDTO(dto);
+            DAOBase<VehiculosDTO>.Insert(dto);
         }
         public static void EliminarVehiculos(int id)
         {
-            VehiculosDAO.EliminarVehiculos(id);
+            DAOBase<VehiculosDTO>.Delete(id);
         }
         public static int ProximoIdVehiculos()
         {
-            int Id = VehiculosDAO.ObtenerProximoId();
+            int Id = DAOBase<VehiculosDTO>.ObtenerProximoId();
             if (Id != 0)
             {
                 return Id;

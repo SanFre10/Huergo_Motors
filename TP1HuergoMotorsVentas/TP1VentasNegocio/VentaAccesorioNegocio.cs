@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TP1VentasDatos;
+using TP1VentasDTOs.DTOs;
 
 namespace TP1VentasNegocio
 {
@@ -12,7 +13,7 @@ namespace TP1VentasNegocio
     {
         public static int ProximoIdVentaAccesorios()
         {
-            return VentaAccesoriosDAO.ObtenerProximoId();
+            return DAOBase<VentasAccesoriosDTO>.ObtenerProximoId();
         }
 
     }

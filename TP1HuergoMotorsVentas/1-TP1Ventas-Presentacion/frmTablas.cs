@@ -103,8 +103,8 @@ namespace TP1Ventas
                     {
                         //Paso al formulario el Id del registro a modificar.
                         form.SelectedID = SelectedID;
-                        form.currenttable = Table;
-                        form.totaldata = totaldata;
+                        form.Currenttable = Table;
+                        form.Totaldata = totaldata;
                         form.ShowDialog();
 
                         //Una vez cerrado el formulario, vuelvo a buscar para actualizar los cambios en la grilla.
@@ -123,8 +123,8 @@ namespace TP1Ventas
             {
                 //Con Id=0 voy a identificar que es un nuevo registro.
                 form.SelectedID = 0;
-                form.currenttable = Table;
-                form.totaldata = totaldata;
+                form.Currenttable = Table;
+                form.Totaldata = totaldata;
                 form.ShowDialog();
                 Buscar();
             }

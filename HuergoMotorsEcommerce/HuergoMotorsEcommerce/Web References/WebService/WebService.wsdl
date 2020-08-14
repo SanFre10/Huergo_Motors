@@ -2,6 +2,99 @@
 <wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="IniciarSesion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IniciarSesionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IniciarSesionResult" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClientesDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contraseña" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dto" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarUsuarioResult" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehiculos">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetVehiculosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosResult" type="tns:ArrayOfVehiculosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVehiculosDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehiculosDTO" nillable="true" type="tns:VehiculosDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehiculosDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrecioVenta" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="StockDisponible" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehiculosFiltrados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filtro" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="valor" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehiculosFiltradosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosFiltradosResult" type="tns:ArrayOfVehiculosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehiculosbyId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehiculosbyIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosbyIdResult" type="tns:ArrayOfVehiculosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetAccesoriosByModelo">
         <s:complexType>
           <s:sequence>
@@ -29,94 +122,37 @@
           <s:element minOccurs="1" maxOccurs="1" name="PrecioVenta" type="s:decimal" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetAccesorios">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAccesoriosResponse">
+      <s:element name="GetImagenes">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAccesoriosResult" type="tns:ArrayOfAccesoriosDTO" />
+            <s:element minOccurs="1" maxOccurs="1" name="idVehiculo" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GetClientes">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetClientesResponse">
+      <s:element name="GetImagenesResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetClientesResult" type="tns:ArrayOfClientesDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetImagenesResult" type="tns:Bitmap" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfClientesDTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="ClientesDTO" nillable="true" type="tns:ClientesDTO" />
-        </s:sequence>
+      <s:complexType name="Bitmap">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Image" />
+        </s:complexContent>
       </s:complexType>
-      <s:complexType name="ClientesDTO">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Direccion" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Telefono" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
-        </s:sequence>
+      <s:complexType name="Image" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Tag" />
+              <s:element minOccurs="0" maxOccurs="1" name="Palette" type="tns:ColorPalette" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
       </s:complexType>
-      <s:element name="GetVehiculos">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetVehiculosResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosResult" type="tns:ArrayOfVehiculosDTO" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfVehiculosDTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="VehiculosDTO" nillable="true" type="tns:VehiculosDTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="VehiculosDTO">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="PrecioVenta" type="s:decimal" />
-          <s:element minOccurs="1" maxOccurs="1" name="StockDisponible" type="s:int" />
-        </s:sequence>
-      </s:complexType>
-      <s:element name="GetVentas">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetVentasResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVentasResult" type="tns:ArrayOfVentasDTO" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfVentasDTO">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="VentasDTO" nillable="true" type="tns:VentasDTO" />
-        </s:sequence>
-      </s:complexType>
-      <s:complexType name="VentasDTO">
-        <s:sequence>
-          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
-          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
-          <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Vendedor" type="s:string" />
-          <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
-          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:decimal" />
-        </s:sequence>
-      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:complexType name="ColorPalette" />
       <s:element name="CrearVenta">
         <s:complexType>
           <s:sequence>
@@ -137,25 +173,102 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetVentas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VentasDTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendedor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observaciones" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Total" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVentasDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VentasDTO" nillable="true" type="tns:VentasDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVentasResult" type="tns:ArrayOfVentasDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dto" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ActualizarUsuarioResult" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosClienteResult" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientes">
+        <s:complexType />
+      </s:element>
+      <s:complexType name="ArrayOfClientesDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ClientesDTO" nillable="true" type="tns:ClientesDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientesResult" type="tns:ArrayOfClientesDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccesorios">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAccesoriosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccesoriosResult" type="tns:ArrayOfAccesoriosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
-  <wsdl:message name="GetAccesoriosByModeloSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAccesoriosByModelo" />
+  <wsdl:message name="IniciarSesionSoapIn">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
   </wsdl:message>
-  <wsdl:message name="GetAccesoriosByModeloSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAccesoriosByModeloResponse" />
+  <wsdl:message name="IniciarSesionSoapOut">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAccesoriosSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAccesorios" />
+  <wsdl:message name="RegistrarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuario" />
   </wsdl:message>
-  <wsdl:message name="GetAccesoriosSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAccesoriosResponse" />
-  </wsdl:message>
-  <wsdl:message name="GetClientesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetClientes" />
-  </wsdl:message>
-  <wsdl:message name="GetClientesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetClientesResponse" />
+  <wsdl:message name="RegistrarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarUsuarioResponse" />
   </wsdl:message>
   <wsdl:message name="GetVehiculosSoapIn">
     <wsdl:part name="parameters" element="tns:GetVehiculos" />
@@ -163,11 +276,29 @@
   <wsdl:message name="GetVehiculosSoapOut">
     <wsdl:part name="parameters" element="tns:GetVehiculosResponse" />
   </wsdl:message>
-  <wsdl:message name="GetVentasSoapIn">
-    <wsdl:part name="parameters" element="tns:GetVentas" />
+  <wsdl:message name="GetVehiculosFiltradosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehiculosFiltrados" />
   </wsdl:message>
-  <wsdl:message name="GetVentasSoapOut">
-    <wsdl:part name="parameters" element="tns:GetVentasResponse" />
+  <wsdl:message name="GetVehiculosFiltradosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehiculosFiltradosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiculosbyIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehiculosbyId" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiculosbyIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehiculosbyIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccesoriosByModeloSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccesoriosByModelo" />
+  </wsdl:message>
+  <wsdl:message name="GetAccesoriosByModeloSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccesoriosByModeloResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetImagenesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetImagenes" />
+  </wsdl:message>
+  <wsdl:message name="GetImagenesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetImagenesResponse" />
   </wsdl:message>
   <wsdl:message name="CrearVentaSoapIn">
     <wsdl:part name="parameters" element="tns:CrearVenta" />
@@ -175,36 +306,94 @@
   <wsdl:message name="CrearVentaSoapOut">
     <wsdl:part name="parameters" element="tns:CrearVentaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetVentasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVentas" />
+  </wsdl:message>
+  <wsdl:message name="GetVentasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCliente" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientes" />
+  </wsdl:message>
+  <wsdl:message name="GetClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAccesoriosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccesorios" />
+  </wsdl:message>
+  <wsdl:message name="GetAccesoriosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccesoriosResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
-    <wsdl:operation name="GetAccesoriosByModelo">
-      <wsdl:input message="tns:GetAccesoriosByModeloSoapIn" />
-      <wsdl:output message="tns:GetAccesoriosByModeloSoapOut" />
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input message="tns:IniciarSesionSoapIn" />
+      <wsdl:output message="tns:IniciarSesionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <wsdl:input message="tns:GetAccesoriosSoapIn" />
-      <wsdl:output message="tns:GetAccesoriosSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetClientes">
-      <wsdl:input message="tns:GetClientesSoapIn" />
-      <wsdl:output message="tns:GetClientesSoapOut" />
+    <wsdl:operation name="RegistrarUsuario">
+      <wsdl:input message="tns:RegistrarUsuarioSoapIn" />
+      <wsdl:output message="tns:RegistrarUsuarioSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetVehiculos">
       <wsdl:input message="tns:GetVehiculosSoapIn" />
       <wsdl:output message="tns:GetVehiculosSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetVentas">
-      <wsdl:input message="tns:GetVentasSoapIn" />
-      <wsdl:output message="tns:GetVentasSoapOut" />
+    <wsdl:operation name="GetVehiculosFiltrados">
+      <wsdl:input message="tns:GetVehiculosFiltradosSoapIn" />
+      <wsdl:output message="tns:GetVehiculosFiltradosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiculosbyId">
+      <wsdl:input message="tns:GetVehiculosbyIdSoapIn" />
+      <wsdl:output message="tns:GetVehiculosbyIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesoriosByModelo">
+      <wsdl:input message="tns:GetAccesoriosByModeloSoapIn" />
+      <wsdl:output message="tns:GetAccesoriosByModeloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetImagenes">
+      <wsdl:input message="tns:GetImagenesSoapIn" />
+      <wsdl:output message="tns:GetImagenesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CrearVenta">
       <wsdl:input message="tns:CrearVentaSoapIn" />
       <wsdl:output message="tns:CrearVentaSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetVentas">
+      <wsdl:input message="tns:GetVentasSoapIn" />
+      <wsdl:output message="tns:GetVentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <wsdl:input message="tns:ActualizarUsuarioSoapIn" />
+      <wsdl:output message="tns:ActualizarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCliente">
+      <wsdl:input message="tns:GetDatosClienteSoapIn" />
+      <wsdl:output message="tns:GetDatosClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientes">
+      <wsdl:input message="tns:GetClientesSoapIn" />
+      <wsdl:output message="tns:GetClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesorios">
+      <wsdl:input message="tns:GetAccesoriosSoapIn" />
+      <wsdl:output message="tns:GetAccesoriosSoapOut" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAccesoriosByModelo">
-      <soap:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
+    <wsdl:operation name="IniciarSesion">
+      <soap:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -212,17 +401,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <soap:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetClientes">
-      <soap:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+    <wsdl:operation name="RegistrarUsuario">
+      <soap:operation soapAction="http://tempuri.org/RegistrarUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -239,8 +419,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetVentas">
-      <soap:operation soapAction="http://tempuri.org/GetVentas" style="document" />
+    <wsdl:operation name="GetVehiculosFiltrados">
+      <soap:operation soapAction="http://tempuri.org/GetVehiculosFiltrados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiculosbyId">
+      <soap:operation soapAction="http://tempuri.org/GetVehiculosbyId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesoriosByModelo">
+      <soap:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagenes">
+      <soap:operation soapAction="http://tempuri.org/GetImagenes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -257,29 +464,65 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-  </wsdl:binding>
-  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
-    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="GetAccesoriosByModelo">
-      <soap12:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
+    <wsdl:operation name="GetVentas">
+      <soap:operation soapAction="http://tempuri.org/GetVentas" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <soap12:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
+    <wsdl:operation name="ActualizarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ActualizarUsuario" style="document" />
       <wsdl:input>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <soap12:body use="literal" />
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCliente">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetClientes">
-      <soap12:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+      <soap:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesorios">
+      <soap:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -296,8 +539,35 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetVentas">
-      <soap12:operation soapAction="http://tempuri.org/GetVentas" style="document" />
+    <wsdl:operation name="GetVehiculosFiltrados">
+      <soap12:operation soapAction="http://tempuri.org/GetVehiculosFiltrados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiculosbyId">
+      <soap12:operation soapAction="http://tempuri.org/GetVehiculosbyId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesoriosByModelo">
+      <soap12:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetImagenes">
+      <soap12:operation soapAction="http://tempuri.org/GetImagenes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -307,6 +577,51 @@
     </wsdl:operation>
     <wsdl:operation name="CrearVenta">
       <soap12:operation soapAction="http://tempuri.org/CrearVenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVentas">
+      <soap12:operation soapAction="http://tempuri.org/GetVentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCliente">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientes">
+      <soap12:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAccesorios">
+      <soap12:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

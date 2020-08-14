@@ -23,14 +23,14 @@ namespace TP1Ventas.Web
                         int id = Convert.ToInt32(Request.QueryString["id"]);
                         AccesoriosNegocio negocio = new AccesoriosNegocio();
 
-                        List<AccesoriosDTO> dto = AccesoriosNegocio.MostrarAccesoriosPorId(id);
+                        AccesoriosDTO dto = AccesoriosNegocio.MostrarAccesoriosPorId(id);
 
                         if (dto != null)
                         {
-                            txId.Text = dto[0].Id.ToString();
-                            txNombre.Text = dto[0].Nombre;
-                            txModelo.Text = dto[0].Modelo.ToString();
-                            txPrecioVenta.Text = dto[0].PrecioVenta.ToString();
+                            txId.Text = dto.Id.ToString();
+                            txNombre.Text = dto.Nombre;
+                            txModelo.Text = dto.Modelo.ToString();
+                            txPrecioVenta.Text = dto.PrecioVenta.ToString();
 
                         }
                         else

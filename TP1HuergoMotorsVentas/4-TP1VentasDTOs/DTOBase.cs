@@ -1,16 +1,13 @@
-﻿using TP1VentasDTOs;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-namespace TP1VentasDTOs
+namespace _4_TP1VentasDTOs
 {
-    public class Class1
+    public abstract class DTOBase
     {
-
+        public int Id { get; set; }
     }
 }

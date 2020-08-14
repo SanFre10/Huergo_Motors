@@ -14,38 +14,35 @@ namespace TP1VentasNegocio
         {
             return ClientesDAO.GetClientes(filtro);
         }
-        public static List<string> MostrarNombreClientes(List<ClientesDTO> lstdto)
+        public static List<string> MostrarNombreClientes(List<ClientesDTO> dtolist)
         {
-            return ClientesDAO.GetNameClientes(lstdto);
+            List<string> ret = new List<string>();
+            foreach (ClientesDTO dto in dtolist)
+            {
+                ret.Add(dto.Nombre);
+            }
+            return ret;
         }
 
-        public static List<ClientesDTO> MostrarClientesPorId(int Id)
+        public static ClientesDTO MostrarClientesPorId(int Id)
         {
-            return ClientesDAO.GetClientesById(Id);
-        }
-        public static void ModificarClientes(string query)
-        {
-            ClientesDAO.ModificarClientes(query);
+            return DAOBase<ClientesDTO>.Read(Id);
         }
         public static void ModificarClientesPorDTO(ClientesDTO dto)
         {
-            ClientesDAO.ModificarClientesPorDTO(dto);
-        }
-        public static void AgregarClientes(string query)
-        {
-            ClientesDAO.AgregarClientes(query);
+            DAOBase<ClientesDTO>.Update(dto);
         }
         public static void AgregarClientesPorDTO(ClientesDTO dto)
         {
-            ClientesDAO.AgregarClientesPorDTO(dto);
+            DAOBase<ClientesDTO>.Insert(dto);
         }
         public static void EliminarClientes(int Id)
         {
-            ClientesDAO.EliminarClientes(Id);
+            DAOBase<ClientesDTO>.Delete(Id);
         }
         public static int ProximoIdClientes()
         {
-            return ClientesDAO.ObtenerProximoId();
+            return DAOBase<ClientesDTO>.ObtenerProximoId();
         }
     }
 }

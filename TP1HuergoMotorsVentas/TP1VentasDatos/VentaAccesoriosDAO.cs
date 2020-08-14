@@ -11,12 +11,6 @@ namespace TP1VentasDatos
 {
     public class VentaAccesoriosDAO
     {
-        public static int ObtenerProximoId()
-        {
-
-                return SQLHelper.ObtenerProximoId("VentasAccesorios");
-
-        }
 
     }
 }

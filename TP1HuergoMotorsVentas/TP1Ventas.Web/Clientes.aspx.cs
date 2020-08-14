@@ -49,6 +49,7 @@ namespace TP1Ventas.Web
         {
             ClientesNegocio negocio = new ClientesNegocio();
             List<ClientesDTO> clientes = ClientesNegocio.MostrarClientes(txFiltro.Text);
+            
 
             gvClientes.DataSource = clientes;
             gvClientes.DataBind();

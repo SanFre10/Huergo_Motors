@@ -8,7 +8,7 @@ namespace TP1VentasNegocio
     {
         public static int ProximoIdVentas()
         {
-            return VentasDAO.ObtenerProximoId();
+            return DAOBase<VentasDTO>.ObtenerProximoId();
         }
         public static string ExecTransaction(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot, int stock)
         {
@@ -16,7 +16,7 @@ namespace TP1VentasNegocio
         }
         public static List<VentasDTO> MostrarVentas()
         {
-            return VentasDAO.GetVentas();
+            return DAOBase<VentasDTO>.ReadAll();
         }
         public static List<VentasDTO> ObtenerConFiltro(string filtro, string elegido, string inicio, string fin)
         {

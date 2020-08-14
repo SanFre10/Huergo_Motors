@@ -22,7 +22,6 @@ C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\ob
 C:\Users\Olivares\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\bin\Debug\4-TP1VentasDTOs.pdb
-D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csprojAssemblyReference.cache
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\TP1VentasDTOs.csproj.CoreCompileInputs.cache
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\4-TP1VentasDTOs\obj\Debug\4-TP1VentasDTOs.pdb

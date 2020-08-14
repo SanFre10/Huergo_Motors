@@ -14,38 +14,37 @@ namespace TP1VentasNegocio
         {
             return VendedoresDAO.GetVendedores(filtro);
         }
-        public static List<string> MostrarNombreVendedores(List<VendedoresDTO> lstdto)
+        public static List<string> MostrarNombreVendedores(List<VendedoresDTO> dtolist)
         {
-            return VendedoresDAO.GetNameVendedores(lstdto);
+            List<string> ret = new List<string>();
+            foreach (VendedoresDTO dto in dtolist)
+            {
+                ret.Add(dto.Nombre + " " + dto.Apellido);
+            }
+            return ret;
         }
 
-        public static List<VendedoresDTO> MostrarVendedoresPorId(int Id)
+        public static VendedoresDTO MostrarVendedoresPorId(int Id)
         {
-            return VendedoresDAO.GetVendedoresById(Id);
+            return DAOBase<VendedoresDTO>.Read(Id);
         }
-        public static void ModificarVendedores(string query)
-        {
-            VendedoresDAO.ModificarVendedores(query);
-        }
+
         public static void ModificarVendedoresPorDTO(VendedoresDTO dto)
         {
-            VendedoresDAO.ModificarVendedoresPorDTO(dto);
+            DAOBase<VendedoresDTO>.Update(dto);
         }
-        public static void AgregarVendedores(string query)
-        {
-            VendedoresDAO.AgregarVendedores(query);
-        }
+
         public static void AgregarVendedoresPorDTO(VendedoresDTO dto)
         {
-            VendedoresDAO.AgregarVendedoresPorDTO(dto);
+            DAOBase<VendedoresDTO>.Insert(dto);
         }
         public static void EliminarVendedores(int Id)
         {
-            VendedoresDAO.EliminarVendedores(Id);
+            DAOBase<VendedoresDTO>.Delete(Id);
         }
         public static int ProximoIdVendedores()
         {
-            int Id = VendedoresDAO.ObtenerProximoId();
+            int Id = DAOBase<VendedoresDTO>.ObtenerProximoId();
             if (Id != 0)
             {
                 return Id;

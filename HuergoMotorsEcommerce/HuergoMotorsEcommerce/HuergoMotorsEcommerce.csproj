@@ -71,11 +71,19 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Detalles.aspx" />
+    <Content Include="Historial.aspx" />
+    <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Registro.aspx" />
+    <Content Include="Vehiculos.aspx" />
     <Content Include="Web References\WebService\AccesoriosDTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\WebService\ClientesDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WebService\Bitmap.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\WebService\Reference.map">
@@ -93,6 +101,27 @@
     <None Include="Web References\WebService\WebService.wsdl" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Detalles.aspx.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalles.aspx.designer.cs">
+      <DependentUpon>Detalles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +134,20 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Vehiculos.aspx.cs">
+      <DependentUpon>Vehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Vehiculos.aspx.designer.cs">
+      <DependentUpon>Vehiculos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\WebService\Reference.cs">
       <AutoGen>True</AutoGen>

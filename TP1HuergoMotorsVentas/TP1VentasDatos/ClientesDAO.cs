@@ -15,74 +15,44 @@ namespace TP1VentasDatos
         {
 
                 DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM clientes WHERE Nombre LIKE '%{filtro}%' OR Direccion LIKE '%{filtro}%' OR Telefono LIKE '%{filtro}%' OR Email LIKE '%{filtro}%' ");
-                return Funciones.Clientes_DataTable_a_DTO(dt);
+                return Funciones.DataTable_a_DTO<ClientesDTO>(dt);
 
         }
-        public static List<string> GetNameClientes(List<ClientesDTO> dtolist)
-        {
 
-                List<string> ret = new List<string>();
-                foreach (ClientesDTO dto in dtolist)
+
+        public static ClientesDTO IniciarSesion(string user,string pass)
+        {
+            try
+            {
+                DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Clientes WHERE Usuario = '{user}' AND Contraseña = '{pass}'");
+
+                if (dt.Rows.Count > 0)
                 {
-                    ret.Add(dto.Nombre);
+                    ClientesDTO dto = new ClientesDTO
+                    {
+                        Id = (int)dt.Rows[0]["Id"],
+                        Nombre = (string)dt.Rows[0]["Nombre"],
+                        Direccion = (string)dt.Rows[0]["Direccion"],
+                        Telefono = (string)dt.Rows[0]["Telefono"],
+                        Email = (string)dt.Rows[0]["Email"],
+                        Usuario = (string)dt.Rows[0]["Usuario"]
+                    };
+
+                    return dto;
                 }
-                return ret;
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
 
-        }
+                throw;
+            }
 
-        public static List<ClientesDTO> GetClientesById(int Id)
-        {
-
-
-                DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Clientes WHERE Id = '{Id}'");
-                return Funciones.Clientes_DataTable_a_DTO(dt);
-
-        }
-        public static List<ClientesDTO> GetAllClientes()
-        {
-
-            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Clientes");
-            return Funciones.Clientes_DataTable_a_DTO(dt);
-
-        }
-        public static int AgregarClientes(string query)
-        {
-
-                return SQLHelper.EjecutarComando(query);
-            
-
-        }
-        public static int AgregarClientesPorDTO(ClientesDTO dto)
-        {
-            int id = SQLHelper.ObtenerProximoId("Clientes");
-            return SQLHelper.EjecutarComando($"INSERT INTO Clientes(Id, Nombre, Direccion, Telefono, Email) VALUES ('{id}','{dto.Nombre}','{dto.Direccion}','{dto.Telefono}', '{dto.Email}')");
-
-
-        }
-        public static int ModificarClientes(string query)
-        {
-
-                return SQLHelper.EjecutarComando(query);
-
-        }
-        public static int ModificarClientesPorDTO(ClientesDTO dto)
-        {
-
-            return SQLHelper.EjecutarComando($"UPDATE Clientes SET Nombre='{dto.Nombre}', Direccion='{dto.Direccion}', Telefono='{dto.Telefono}', Email='{dto.Email}' WHERE Id='{dto.Id}'");
-
-        }
-        public static int EliminarClientes(int Id)
-        {
-
-                return SQLHelper.EjecutarComando($"DELETE from clientes WHERE Id = {Id}");
 
             
-        }
-        public static int ObtenerProximoId()
-        {
-
-                return SQLHelper.ObtenerProximoId("clientes");
-
         }
     }
 }

@@ -66,3 +66,17 @@ C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\TP1Ventas.Web\bin\4-TP1VentasDTOs.
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\TP1Ventas.Web\bin\TP1VentasNegocio.pdb
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\TP1Ventas.Web\bin\TP1VentasDatos.pdb
 C:\Users\santi\OneDrive\Escritorio\TP1_V6_EQ6\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.csproj.CopyComplete
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.csprojAssemblyReference.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.csproj.CoreCompileInputs.cache
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1Ventas.Web.dll.config
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1Ventas.Web.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1Ventas.Web.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\4-TP1VentasDTOs.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1VentasNegocio.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1VentasDatos.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\4-TP1VentasDTOs.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1VentasNegocio.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\bin\TP1VentasDatos.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\TP1Ventas.Web\obj\Debug\TP1Ventas.Web.csproj.CopyComplete

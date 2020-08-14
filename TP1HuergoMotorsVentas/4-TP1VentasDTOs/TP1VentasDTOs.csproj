@@ -41,12 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="AccesoriosDTO.cs" />
+    <Compile Include="CarritoDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
+    <Compile Include="DTOBase.cs" />
     <Compile Include="VehiculosDTO.cs" />
     <Compile Include="VendedoresDTO.cs" />
-    <Compile Include="VentasAccesorios.cs" />
+    <Compile Include="VentasAccesoriosDTO.cs" />
     <Compile Include="VentasDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -23,15 +23,15 @@ namespace TP1Ventas.Web
                         int id = Convert.ToInt32(Request.QueryString["id"]);
                         VehiculosNegocio negocio = new VehiculosNegocio();
 
-                        List <VehiculosDTO> dto = VehiculosNegocio.MostrarVehiculosPorId(id);
+                        VehiculosDTO dto = VehiculosNegocio.MostrarVehiculosPorId(id);
 
                         if (dto != null)
                         {
-                            txId.Text = dto[0].Id.ToString();
-                            txModelo.Text = dto[0].Modelo;
-                            txPrecioVenta.Text = dto[0].PrecioVenta.ToString();
-                            txStockDisponible.Text = dto[0].StockDisponible.ToString();
-                            txTipo.Text = dto[0].Tipo;
+                            txId.Text = dto.Id.ToString();
+                            txModelo.Text = dto.Modelo;
+                            txPrecioVenta.Text = dto.PrecioVenta.ToString();
+                            txStockDisponible.Text = dto.StockDisponible.ToString();
+                            txTipo.Text = dto.Tipo;
 
                         }
                         else

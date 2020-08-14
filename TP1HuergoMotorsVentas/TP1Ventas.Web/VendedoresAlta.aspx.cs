@@ -22,16 +22,16 @@ namespace TP1Ventas.Web
                         int id = Convert.ToInt32(Request.QueryString["id"]);
                         VendedoresNegocio negocio = new VendedoresNegocio();
 
-                        List<VendedoresDTO> dto = VendedoresNegocio.MostrarVendedoresPorId(id);
+                        VendedoresDTO dto = VendedoresNegocio.MostrarVendedoresPorId(id);
 
                         if (dto != null)
                         {
-                            txId.Text = dto[0].Id.ToString();
-                            txNombre.Text = dto[0].Nombre;
-                            txApellido.Text = dto[0].Apellido.ToString();
-                            txSucursal.Text = dto[0].Sucursal.ToString();
-                            txUsuario.Text = dto[0].Usuario.ToString();
-                            txContraseña.Text = dto[0].Contraseña.ToString();
+                            txId.Text = dto.Id.ToString();
+                            txNombre.Text = dto.Nombre;
+                            txApellido.Text = dto.Apellido.ToString();
+                            txSucursal.Text = dto.Sucursal.ToString();
+                            txUsuario.Text = dto.Usuario.ToString();
+                            txContraseña.Text = dto.Contraseña.ToString();
                         }
                         else
                         {

@@ -14,42 +14,39 @@ namespace TP1VentasNegocio
         {
             return AccesoriosDAO.GetAccesorios(filtro);
         }
-        public static List<string> MostrarNombreYPrecioAccesorios(List<AccesoriosDTO> lstdto)
+        public static List<string> MostrarNombreYPrecioAccesorios(List<AccesoriosDTO> dtolist)
         {
-            return AccesoriosDAO.GetNameAndValue(lstdto);
+            List<string> ret = new List<string>();
+            foreach (AccesoriosDTO dto in dtolist)
+            {
+                ret.Add(dto.Nombre + "-" + dto.PrecioVenta);
+            }
+            return ret;
         }
         public static List<AccesoriosDTO> BuscarPorNombre(List<string> nombres)
         {
             return AccesoriosDAO.BuscarPorNombre(nombres);
         }
 
-        public static List<AccesoriosDTO> MostrarAccesoriosPorId(int id)
+        public static AccesoriosDTO MostrarAccesoriosPorId(int id)
         {
-            return AccesoriosDAO.GetAccesoriosById(id);
-        }
-        public static void ModificarAccesorios(string query)
-        {
-            AccesoriosDAO.ModificarAccesorios(query);
+            return DAOBase<AccesoriosDTO>.Read(id);
         }
         public static void ModificarAccesoriosPorDTO(AccesoriosDTO dto)
         {
-            AccesoriosDAO.ModificarAccesoriosPorDTO(dto);
-        }
-        public static void AgregarAccesorios(string query)
-        {
-            AccesoriosDAO.AgregarAccesorios(query);
+            DAOBase<AccesoriosDTO>.Update(dto);
         }
         public static void AgregarAccesoriosPorDTO(AccesoriosDTO dto)
         {
-            AccesoriosDAO.AgregarAccesoriosPorDTO(dto);
+            DAOBase<AccesoriosDTO>.Insert(dto);
         }
         public static void EliminarAccesorios(int id)
         {
-            AccesoriosDAO.EliminarAccesorios(id);
+            DAOBase<AccesoriosDTO>.Delete(id);
         }
         public static int ProximoIdAccesorios()
         {
-            int Id = AccesoriosDAO.ObtenerProximoId();
+            int Id = DAOBase<AccesoriosDTO>.ObtenerProximoId();
             if (Id != 0)
             {
                 return Id;

@@ -277,7 +277,7 @@
             this.Name = "frmAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta o Modificación";
-            this.Load += new System.EventHandler(this.frmVehiculoAlta_Load);
+            this.Load += new System.EventHandler(this.FrmVehiculoAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NUD3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUD5)).EndInit();

@@ -9,14 +9,21 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+            <asp:Label ID="Label3" runat="server" Text="Iniciar Sesion"></asp:Label>
             <br />
-            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
-            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            <asp:Label ID="Label1" runat="server" Text="Usuario"></asp:Label>
+            <asp:TextBox ID="txUser" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="Button1" runat="server" Text="Button" />
+            <asp:Label ID="Label2" runat="server" Text="Contraseña"></asp:Label>
+            <asp:TextBox ID="txPass" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnAceptar" runat="server" Text="Iniciar Sesion" OnClick="btnAceptar_Click" />
+            <br />
+            <asp:Button ID="btnRegistrar" runat="server" OnClick="btnRegistrar_Click" Text="Registrarse" />
+            <br />
+            <asp:Button ID="btnOlvide" runat="server" Text="Olvide mi contraseña" />
         </div>
+        <asp:Label ID="lblMsg" runat="server" Text="mensaje"></asp:Label>
     </form>
 </body>
 </html>
