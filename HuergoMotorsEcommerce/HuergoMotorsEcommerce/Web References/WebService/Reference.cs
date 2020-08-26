@@ -23,11 +23,11 @@ namespace HuergoMotorsEcommerce.WebService {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="WebServiceSoap", Namespace="http://tempuri.org/")]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(MarshalByRefObject))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(DTOBase))]
     public partial class WebService : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback IniciarSesionOperationCompleted;
@@ -253,10 +253,10 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVehiculosbyId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VehiculosDTO[] GetVehiculosbyId(int Id) {
+        public VehiculosDTO GetVehiculosbyId(int Id) {
             object[] results = this.Invoke("GetVehiculosbyId", new object[] {
                         Id});
-            return ((VehiculosDTO[])(results[0]));
+            return ((VehiculosDTO)(results[0]));
         }
         
         /// <remarks/>
@@ -311,10 +311,10 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetImagenes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Bitmap GetImagenes(int idVehiculo) {
+        public string GetImagenes(int idVehiculo) {
             object[] results = this.Invoke("GetImagenes", new object[] {
                         idVehiculo});
-            return ((Bitmap)(results[0]));
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -410,24 +410,22 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ActualizarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ClientesDTO ActualizarUsuario(ClientesDTO dto) {
-            object[] results = this.Invoke("ActualizarUsuario", new object[] {
-                        dto});
+        public ClientesDTO ActualizarUsuario() {
+            object[] results = this.Invoke("ActualizarUsuario", new object[0]);
             return ((ClientesDTO)(results[0]));
         }
         
         /// <remarks/>
-        public void ActualizarUsuarioAsync(ClientesDTO dto) {
-            this.ActualizarUsuarioAsync(dto, null);
+        public void ActualizarUsuarioAsync() {
+            this.ActualizarUsuarioAsync(null);
         }
         
         /// <remarks/>
-        public void ActualizarUsuarioAsync(ClientesDTO dto, object userState) {
+        public void ActualizarUsuarioAsync(object userState) {
             if ((this.ActualizarUsuarioOperationCompleted == null)) {
                 this.ActualizarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnActualizarUsuarioOperationCompleted);
             }
-            this.InvokeAsync("ActualizarUsuario", new object[] {
-                        dto}, this.ActualizarUsuarioOperationCompleted, userState);
+            this.InvokeAsync("ActualizarUsuario", new object[0], this.ActualizarUsuarioOperationCompleted, userState);
         }
         
         private void OnActualizarUsuarioOperationCompleted(object arg) {
@@ -540,14 +538,14 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ClientesDTO {
+    public partial class ClientesDTO : DTOBase {
         
-        private int idField;
+        private bool clientesField;
         
         private string nombreField;
         
@@ -562,12 +560,12 @@ namespace HuergoMotorsEcommerce.WebService {
         private string contraseñaField;
         
         /// <remarks/>
-        public int Id {
+        public bool Clientes {
             get {
-                return this.idField;
+                return this.clientesField;
             }
             set {
-                this.idField = value;
+                this.clientesField = value;
             }
         }
         
@@ -633,14 +631,39 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VentasDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(AccesoriosDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VehiculosDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClientesDTO))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class VentasDTO {
+    public abstract partial class DTOBase {
         
         private int idField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class VentasDTO : DTOBase {
+        
+        private bool ventasField;
         
         private System.DateTime fechaField;
         
@@ -655,12 +678,12 @@ namespace HuergoMotorsEcommerce.WebService {
         private decimal totalField;
         
         /// <remarks/>
-        public int Id {
+        public bool Ventas {
             get {
-                return this.idField;
+                return this.ventasField;
             }
             set {
-                this.idField = value;
+                this.ventasField = value;
             }
         }
         
@@ -726,77 +749,14 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class ColorPalette {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Image))]
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bitmap))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public abstract partial class MarshalByRefObject {
-    }
-    
-    /// <remarks/>
-    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bitmap))]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public abstract partial class Image : MarshalByRefObject {
+    public partial class AccesoriosDTO : DTOBase {
         
-        private object tagField;
-        
-        private ColorPalette paletteField;
-        
-        /// <remarks/>
-        public object Tag {
-            get {
-                return this.tagField;
-            }
-            set {
-                this.tagField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public ColorPalette Palette {
-            get {
-                return this.paletteField;
-            }
-            set {
-                this.paletteField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class Bitmap : Image {
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class AccesoriosDTO {
-        
-        private int idField;
+        private bool accesoriosField;
         
         private string nombreField;
         
@@ -805,12 +765,12 @@ namespace HuergoMotorsEcommerce.WebService {
         private decimal precioVentaField;
         
         /// <remarks/>
-        public int Id {
+        public bool Accesorios {
             get {
-                return this.idField;
+                return this.accesoriosField;
             }
             set {
-                this.idField = value;
+                this.accesoriosField = value;
             }
         }
         
@@ -846,14 +806,14 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class VehiculosDTO {
+    public partial class VehiculosDTO : DTOBase {
         
-        private int idField;
+        private bool vehiculosField;
         
         private string tipoField;
         
@@ -864,12 +824,12 @@ namespace HuergoMotorsEcommerce.WebService {
         private int stockDisponibleField;
         
         /// <remarks/>
-        public int Id {
+        public bool Vehiculos {
             get {
-                return this.idField;
+                return this.vehiculosField;
             }
             set {
-                this.idField = value;
+                this.vehiculosField = value;
             }
         }
         
@@ -915,11 +875,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void IniciarSesionCompletedEventHandler(object sender, IniciarSesionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class IniciarSesionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -941,11 +901,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void RegistrarUsuarioCompletedEventHandler(object sender, RegistrarUsuarioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RegistrarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -967,11 +927,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetVehiculosCompletedEventHandler(object sender, GetVehiculosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVehiculosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -993,11 +953,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetVehiculosFiltradosCompletedEventHandler(object sender, GetVehiculosFiltradosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVehiculosFiltradosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1019,11 +979,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetVehiculosbyIdCompletedEventHandler(object sender, GetVehiculosbyIdCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVehiculosbyIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1036,20 +996,20 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public VehiculosDTO[] Result {
+        public VehiculosDTO Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((VehiculosDTO[])(this.results[0]));
+                return ((VehiculosDTO)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetAccesoriosByModeloCompletedEventHandler(object sender, GetAccesoriosByModeloCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAccesoriosByModeloCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1071,11 +1031,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetImagenesCompletedEventHandler(object sender, GetImagenesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetImagenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1088,20 +1048,20 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public Bitmap Result {
+        public string Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((Bitmap)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void CrearVentaCompletedEventHandler(object sender, CrearVentaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CrearVentaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1123,11 +1083,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetVentasCompletedEventHandler(object sender, GetVentasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetVentasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1149,11 +1109,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void ActualizarUsuarioCompletedEventHandler(object sender, ActualizarUsuarioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ActualizarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1175,11 +1135,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetDatosClienteCompletedEventHandler(object sender, GetDatosClienteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetDatosClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1201,11 +1161,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetClientesCompletedEventHandler(object sender, GetClientesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetClientesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1227,11 +1187,11 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetAccesoriosCompletedEventHandler(object sender, GetAccesoriosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAccesoriosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

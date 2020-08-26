@@ -31,7 +31,7 @@ namespace HuergoMotorsEcommerce
 
 
                     Session.Add("usuario", dto);
-                    Response.Redirect("Home.aspx");
+                    Response.Redirect("Vehiculos.aspx");
                 }
                 else
                 {

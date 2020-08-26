@@ -66,11 +66,10 @@ namespace Services
             return AccesoriosDAO.GetAccesoriosByModelo(filtro);
         }
         [WebMethod]
-        public Bitmap GetImagenes(int idVehiculo)
+        public string GetImagenes(int idVehiculo)
         {
-            Bitmap imagen = new Bitmap(10,10);
 
-            return imagen;
+            return "data:image/png;base64," + Convert.ToBase64String(VehiculosDAO.GetImagenes(idVehiculo));
 
         }
 

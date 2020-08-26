@@ -52,8 +52,8 @@ D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\bin\ro
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\bin\roslyn\VBCSCompiler.exe.config
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.csprojAssemblyReference.cache
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.csproj.CoreCompileInputs.cache
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.csproj.CopyComplete
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.dll
 D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.pdb
+D:\User\Desktop\Huergo_Motors\HuergoMotorsEcommerce\HuergoMotorsEcommerce\obj\Debug\HuergoMotorsEcommerce.csprojAssemblyReference.cache

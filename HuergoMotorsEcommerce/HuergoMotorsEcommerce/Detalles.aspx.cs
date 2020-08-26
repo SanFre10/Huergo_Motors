@@ -19,7 +19,7 @@ namespace HuergoMotorsEcommerce
                     if (!IsPostBack)
                     {
                         WebService.WebService ws = new WebService.WebService();
-                        VehiculosDTO vehiculo = ws.GetVehiculosbyId(Convert.ToInt32(Request.QueryString["id"]))[0];
+                        VehiculosDTO vehiculo = ws.GetVehiculosbyId(Convert.ToInt32(Request.QueryString["id"]));
 
 
                         lblModelo.Text = vehiculo.Modelo;

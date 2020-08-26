@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="HuergoMotorsEcommerce.Home1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <a class="navbar-brand" href="#">
+                    <img src="/bin/Logo.png" width="30" height="30" alt="">
+                </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto bg-light align-items-center ml-5 rounded">
+                    <li class="nav-item align-middle">
+                    <asp:Label ID="Label2" runat="server" Text="Filtrar Por: " CssClass=" my-auto align-middle m-2"></asp:Label>
+                  </li>
+                    <li class="nav-item">
+                        <asp:DropDownList ID="ddlBusqueda" runat="server" CssClass="mr-auto align-middle m-2"></asp:DropDownList>
+                      </li>
+                    <li class="nav-item">
+                        <asp:TextBox ID="txFiltro" runat="server" CssClass="mr-auto align-middle m-2"></asp:TextBox>
+                    </li>
+                    <li class="nav-item">
+                        <asp:Button ID="btnFiltro" runat="server" Text="Buscar" OnClick="btnFiltrar_Click" CssClass="btn btn-primary m-2"/>
+                    </li>
+
+                         
+                </ul>
+                  
+                <asp:Button ID="btnCarrito" runat="server" Text="Carrito" CssClass="btn btn-light m-1 inline-button" />
+                <asp:Button ID="btnHistorial" runat="server" Text="Historial de compras" OnClick="btnHistorial_Click" CssClass="btn btn-outline-light m-1 inline-button"/>                  
+                <asp:Button ID="btnDatos" runat="server" Text="Mis datos" CssClass="btn btn-outline-light m-1 inline-button"/>
+                <asp:Button ID="btnCerrar" runat="server" Text="Cerrar Sesion" OnClick="btnCerrar_Click" cssclass="btn btn-outline-danger m-1 inline-button"/>
+
+
+              </div>
+            </nav>
+
+
+
+
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>
