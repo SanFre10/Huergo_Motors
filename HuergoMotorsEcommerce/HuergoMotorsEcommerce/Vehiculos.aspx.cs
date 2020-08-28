@@ -45,11 +45,11 @@ namespace HuergoMotorsEcommerce
 
         }
 
-        
+
 
         public void CargarDTOs(VehiculosDTO[] vehiculos)
         {
-            if(HttpContext.Current.Request.Url.AbsolutePath != "/Vehiculos.aspx")
+            if (HttpContext.Current.Request.Url.AbsolutePath != "/Vehiculos.aspx")
             {
                 Response.Redirect("Vehiculos.aspx");
             }
@@ -59,39 +59,53 @@ namespace HuergoMotorsEcommerce
             foreach (VehiculosDTO v in vehiculos)
             {
                 HtmlGenericControl div = new HtmlGenericControl("div");
-                div.Attributes["class"] = "item card w-50 mx-auto m-5";
+                div.Attributes["class"] = "item card mb-3 w-50 mx-auto m-5";
+                div.Attributes["Style"] = "border-color:#A2192D;border-width:2px";
 
+                HtmlGenericControl div2 = new HtmlGenericControl("div");
+                div2.Attributes["class"] = "row no-gutters";
 
-                Button button = new Button();
-                button.ID = v.Id.ToString();
-                button.Text = "Ir a detalles";
-                button.PostBackUrl = "Detalles.aspx?id=" + button.ID;
-                button.Attributes["class"] = "btnDetalles btn btn-primary";
-
+                HtmlGenericControl div3 = new HtmlGenericControl("div");
+                div3.Attributes["class"] = "col-md-8";
 
                 HtmlGenericControl imagen = new HtmlGenericControl("img");
-                imagen.Attributes["Source"] = "bin/car-icon.png";
                 imagen.Attributes["class"] = "Imagen card-img-top";
                 imagen.Attributes["runat"] = "server";
                 imagen.Attributes["src"] = ws.GetImagenes(2);
 
+                HtmlGenericControl link = new HtmlGenericControl("a");
+                link.Attributes["href"] = "Detalles.aspx?id=" + v.Id;
+
                 HtmlGenericControl body = new HtmlGenericControl("div");
                 body.Attributes["class"] = "card-body";
 
-                HtmlGenericControl modelo = new HtmlGenericControl("p");
-                modelo.Attributes["class"] = "lblmodelo card-title";
+                HtmlGenericControl body2 = new HtmlGenericControl("div");
+                body2.Attributes["class"] = "col-md-4";
+
+                HtmlGenericControl modelo = new HtmlGenericControl("h4");
+                modelo.Attributes["class"] = "lblmodelo card-title text-decoration-none";
+                modelo.Attributes["Style"] = "color:black;";
                 modelo.InnerText = v.Modelo;
 
                 HtmlGenericControl precio = new HtmlGenericControl("p");
-                precio.Attributes["class"] = "lblprecio card-text";
+                precio.Attributes["class"] = "lblprecio card-text text-decoration-none";
                 precio.InnerText = "$ " + v.PrecioVenta.ToString();
+                precio.Attributes["Style"] = "color:black;";
+
+
+                div3.Controls.Add(imagen);
 
                 body.Controls.Add(modelo);
                 body.Controls.Add(precio);
-                body.Controls.Add(button);
 
-                div.Controls.Add(imagen);
-                div.Controls.Add(body);
+                body2.Controls.Add(body);
+
+                div2.Controls.Add(div3);
+                div2.Controls.Add(body2);
+
+
+                link.Controls.Add(div2);
+                div.Controls.Add(link);
 
                 divVehiculos.Controls.Add(div);
             }

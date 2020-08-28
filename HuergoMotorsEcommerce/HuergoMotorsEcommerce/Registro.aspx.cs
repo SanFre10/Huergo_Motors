@@ -1,10 +1,5 @@
 ﻿using HuergoMotorsEcommerce.WebService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HuergoMotorsEcommerce
 {
@@ -26,22 +21,29 @@ namespace HuergoMotorsEcommerce
             {
                 if (txContraseña.Text == txConfirmar.Text)
                 {
-                    WebService.WebService ws = new WebService.WebService();
+                    if (txNombre.Text != "" && txTelefono.Text != "" && txDireccion.Text != "" && txEmail.Text != "" && txUsuario.Text != "" && txContraseña.Text != "")
+                    {
+                        WebService.WebService ws = new WebService.WebService();
 
-                    ClientesDTO dto = new ClientesDTO();
+                        ClientesDTO dto = new ClientesDTO();
 
-                    dto.Nombre = txNombre.Text;
-                    dto.Telefono = txTelefono.Text;
-                    dto.Direccion = txDireccion.Text;
-                    dto.Email = txEmail.Text;
-                    dto.Usuario = txUsuario.Text;
-                    dto.Contraseña = txContraseña.Text;
+                        dto.Nombre = txNombre.Text;
+                        dto.Telefono = txTelefono.Text;
+                        dto.Direccion = txDireccion.Text;
+                        dto.Email = txEmail.Text;
+                        dto.Usuario = txUsuario.Text;
+                        dto.Contraseña = txContraseña.Text;
 
-                    ws.RegistrarUsuario(dto);
+                        ws.RegistrarUsuario(dto);
 
-                    lblMsg.Text = "Usuario registrado con exito";
-                    Response.Redirect("login.aspx");
+                        lblMsg.Text = "Usuario registrado con exito";
+                        Response.Redirect("login.aspx");
 
+                    }
+                    else
+                    {
+                        lblMsg.Text = "Faltan datos por completar";
+                    }
                 }
                 else
                 {
@@ -52,7 +54,7 @@ namespace HuergoMotorsEcommerce
             {
                 lblMsg.Text = ex.Message;
             }
-            
+
 
         }
     }

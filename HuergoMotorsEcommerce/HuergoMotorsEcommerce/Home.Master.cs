@@ -1,10 +1,5 @@
 ﻿using HuergoMotorsEcommerce.WebService;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace HuergoMotorsEcommerce
 {
@@ -22,6 +17,7 @@ namespace HuergoMotorsEcommerce
                 string[] filtros = { "Modelo", "Tipo" };
                 ddlBusqueda.DataSource = filtros;
                 ddlBusqueda.DataBind();
+                Session["DTO"] = null;
             }
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)

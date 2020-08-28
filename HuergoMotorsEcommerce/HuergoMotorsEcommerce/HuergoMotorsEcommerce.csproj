@@ -67,12 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Detalles.aspx" />
     <Content Include="Home.Master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Detalles.aspx" />
     <Content Include="Historial.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Registro.aspx" />

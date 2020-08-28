@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace HuergoMotorsEcommerce
 {
-    public partial class Detalles : System.Web.UI.Page
+    public partial class Detalles1 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,9 +21,10 @@ namespace HuergoMotorsEcommerce
                         WebService.WebService ws = new WebService.WebService();
                         VehiculosDTO vehiculo = ws.GetVehiculosbyId(Convert.ToInt32(Request.QueryString["id"]));
 
-
+                        Imagen.Attributes["src"] = ws.GetImagenes(1);
                         lblModelo.Text = vehiculo.Modelo;
-                        if(vehiculo.StockDisponible > 0)
+                        lblPrecio.Text = "$ " + vehiculo.PrecioVenta.ToString(); 
+                        if (vehiculo.StockDisponible > 0)
                         {
                             lblstock.Text = "En stock";
                         }
@@ -42,16 +43,11 @@ namespace HuergoMotorsEcommerce
                     Response.Redirect("Login.aspx");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw;
             }
 
-        }
-
-        protected void btnVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Vehiculos.aspx");
         }
     }
 }
