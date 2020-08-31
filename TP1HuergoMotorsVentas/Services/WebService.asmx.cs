@@ -68,8 +68,13 @@ namespace Services
         [WebMethod]
         public string GetImagenes(int idVehiculo)
         {
-
-            return "data:image/png;base64," + Convert.ToBase64String(VehiculosDAO.GetImagenes(idVehiculo));
+            byte[] imagen = VehiculosDAO.GetImagenes(idVehiculo);
+            if(imagen != null)
+            {
+                return "data:image/png;base64," + Convert.ToBase64String(imagen);
+            }
+            return "car-icon.png";
+            
 
         }
 

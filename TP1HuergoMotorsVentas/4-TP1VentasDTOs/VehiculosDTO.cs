@@ -16,6 +16,7 @@ namespace TP1VentasDTOs
         public string Modelo { get; set; }
         public decimal PrecioVenta { get; set; }
         public int StockDisponible { get; set; }
+        public string Descripcion { get; set; }
 
     }
 }

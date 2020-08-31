@@ -823,6 +823,8 @@ namespace HuergoMotorsEcommerce.WebService {
         
         private int stockDisponibleField;
         
+        private string descripcionField;
+        
         /// <remarks/>
         public bool Vehiculos {
             get {
@@ -870,6 +872,16 @@ namespace HuergoMotorsEcommerce.WebService {
             }
             set {
                 this.stockDisponibleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
             }
         }
     }

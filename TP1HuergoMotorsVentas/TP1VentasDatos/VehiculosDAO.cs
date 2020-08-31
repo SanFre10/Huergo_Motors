@@ -29,7 +29,13 @@ namespace TP1VentasDatos
         public static byte[] GetImagenes(int id)
         {
             DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM VehiculosImagenes WHERE IdVehiculo = '{id}'");
-            return (byte[])dt.Rows[0]["Foto"];
+            if(dt.Rows.Count > 0)
+            {
+                return (byte[])dt.Rows[0]["Foto"];
+            }
+            return null;
+
+
         }
 
 

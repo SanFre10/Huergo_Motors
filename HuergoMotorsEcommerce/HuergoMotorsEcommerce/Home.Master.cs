@@ -7,35 +7,47 @@ namespace HuergoMotorsEcommerce
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClientesDTO dto = (ClientesDTO)Session["usuario"];
-            if (dto == null)
+            if (!IsPostBack)
             {
-                Response.Redirect("Login.aspx");
-            }
-            else
-            {
-                string[] filtros = { "Modelo", "Tipo" };
-                ddlBusqueda.DataSource = filtros;
-                ddlBusqueda.DataBind();
-                Session["DTO"] = null;
+                ClientesDTO dto = (ClientesDTO)Session["usuario"];
+                if (dto == null)
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    string[] filtros = { "Modelo", "Tipo" };
+                    ddlBusqueda.DataSource = filtros;
+                    ddlBusqueda.DataBind();
+                    Session["DTO"] = null;
+                }
             }
         }
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
-            WebService.WebService ws = new WebService.WebService();
-            Vehiculos2 v = new Vehiculos2();
-            VehiculosDTO[] vehiculos = new VehiculosDTO[] { };
-            if (txFiltro.Text != "")
+            try
             {
-                vehiculos = ws.GetVehiculosFiltrados(ddlBusqueda.SelectedValue, txFiltro.Text);
+                WebService.WebService ws = new WebService.WebService();
+                Vehiculos2 v = new Vehiculos2();
+                VehiculosDTO[] vehiculos = new VehiculosDTO[] { };
+                if (txFiltro.Text != "")
+                {
+                    vehiculos = ws.GetVehiculosFiltrados(ddlBusqueda.SelectedValue, txFiltro.Text);
+                }
+                else
+                {
+                    vehiculos = ws.GetVehiculos();
+                }
+                Session.Add("DTO", vehiculos);
+                Response.Redirect("Vehiculos.aspx?");
             }
-            else
+            catch (Exception)
             {
-                vehiculos = ws.GetVehiculos();
-            }
-            Session.Add("DTO", vehiculos);
-            Response.Redirect("Vehiculos.aspx?");
 
+                throw;
+            }
+
+            
         }
         protected void btnCerrar_Click(object sender, EventArgs e)
         {

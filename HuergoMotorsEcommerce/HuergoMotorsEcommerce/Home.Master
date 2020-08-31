@@ -26,10 +26,10 @@
                         <asp:Label ID="Label2" runat="server" Text="Filtrar Por: " CssClass=" my-auto align-middle m-2"></asp:Label>
                   </li>
                     <li class="nav-item">
-                        <asp:DropDownList ID="ddlBusqueda" runat="server" CssClass="mr-auto align-middle m-2"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlBusqueda" runat="server" CssClass="mr-auto align-middle m-2 form-control"></asp:DropDownList>
                       </li>
                     <li class="nav-item">
-                        <asp:TextBox ID="txFiltro" runat="server" CssClass="mr-auto align-middle m-2"></asp:TextBox>
+                        <asp:TextBox ID="txFiltro" runat="server" CssClass="mr-auto align-middle m-2 form-control"></asp:TextBox>
                     </li>
                     <li class="nav-item">
                         <asp:Button ID="btnFiltro" runat="server" Text="Buscar" OnClick="btnFiltrar_Click" CssClass="btn btn-danger m-2"/>

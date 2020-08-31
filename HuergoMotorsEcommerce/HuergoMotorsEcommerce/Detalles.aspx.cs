@@ -21,9 +21,10 @@ namespace HuergoMotorsEcommerce
                         WebService.WebService ws = new WebService.WebService();
                         VehiculosDTO vehiculo = ws.GetVehiculosbyId(Convert.ToInt32(Request.QueryString["id"]));
 
-                        Imagen.Attributes["src"] = ws.GetImagenes(1);
+                        Imagen.Attributes["src"] = ws.GetImagenes(vehiculo.Id);
                         lblModelo.Text = vehiculo.Modelo;
-                        lblPrecio.Text = "$ " + vehiculo.PrecioVenta.ToString(); 
+                        lblPrecio.Text = "$ " + vehiculo.PrecioVenta.ToString();
+                        lblDescripcion.Text = vehiculo.Descripcion;
                         if (vehiculo.StockDisponible > 0)
                         {
                             lblstock.Text = "En stock";
