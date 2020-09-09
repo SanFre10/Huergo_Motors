@@ -34,9 +34,9 @@
                     
 
 
-                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" CssClass="btn btn-light btn-lg mx-auto d-block"/>
+                    <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click" CssClass="btn btn-light btn-lg mx-auto d-block w-50"/>
 
-                    <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" CssClass="btn btn-outline-light mx-auto d-block my-3"/>
+                    <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" CssClass="btn btn-outline-light mx-auto d-block my-3 w-50"/>
                     <asp:Label ID="lblMsg" runat="server" Text="" CssClass="h3"></asp:Label>
                 </div>
             </form>

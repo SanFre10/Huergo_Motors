@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TP1VentasDTOs;
 using TP1Ventas;
 using System.Globalization;
+using TP1VentasNegocio;
 
 namespace TP1VentasDatos
 {
@@ -15,25 +16,52 @@ namespace TP1VentasDatos
         public static List<VehiculosDTO> GetVehiculos(string filtro)
         {
 
-                DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%' OR Modelo LIKE '%{filtro}%'");
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%' OR Modelo LIKE '%{filtro}%'");
             return Funciones.DataTable_a_DTO<VehiculosDTO>(dt);
 
         }
 
-        public static List<VehiculosDTO> GetVehiculosConFiltro(string filtro,string valor)
+        public static List<VehiculosDTO> GetVehiculos(string filtro = "",string valor = "")
         {
-            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE {filtro} LIKE '{valor}'");
-            return Funciones.DataTable_a_DTO<VehiculosDTO>(dt);
+            DataTable dt;
+            try
+            {
+                if (valor != "")
+                {
+                    if (filtro == "Precio desde")
+                    {
+                        dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE PrecioVenta > '{valor}'");
+                    }
+                    else if (filtro == "Precio hasta")
+                    {
+                        dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE PrecioVenta < '{valor}'");
+                    }
+                    else
+                    {
+                        dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos WHERE {filtro} LIKE '{valor}'");
+                    }
+                }
+                else
+                {
+                    dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Vehiculos");
+                }
+
+                return Funciones.DataTable_a_DTO<VehiculosDTO>(dt);
+            }
+            catch (Exception)
+            {
+                return new List<VehiculosDTO>();
+            }
+            
+
+
+         
         }
 
-        public static byte[] GetImagenes(int id)
+        public static List<VehiculosImagenesDTO> GetImagenes(int id)
         {
             DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM VehiculosImagenes WHERE IdVehiculo = '{id}'");
-            if(dt.Rows.Count > 0)
-            {
-                return (byte[])dt.Rows[0]["Foto"];
-            }
-            return null;
+            return Funciones.DataTable_a_DTO<VehiculosImagenesDTO>(dt);
 
 
         }

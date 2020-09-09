@@ -42,8 +42,6 @@ namespace HuergoMotorsEcommerce.WebService {
         
         private System.Threading.SendOrPostCallback GetAccesoriosByModeloOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetImagenesOperationCompleted;
-        
         private System.Threading.SendOrPostCallback CrearVentaOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetVentasOperationCompleted;
@@ -111,9 +109,6 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         public event GetAccesoriosByModeloCompletedEventHandler GetAccesoriosByModeloCompleted;
-        
-        /// <remarks/>
-        public event GetImagenesCompletedEventHandler GetImagenesCompleted;
         
         /// <remarks/>
         public event CrearVentaCompletedEventHandler CrearVentaCompleted;
@@ -195,9 +190,9 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVehiculos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VehiculosDTO[] GetVehiculos() {
+        public AutoConFoto[] GetVehiculos() {
             object[] results = this.Invoke("GetVehiculos", new object[0]);
-            return ((VehiculosDTO[])(results[0]));
+            return ((AutoConFoto[])(results[0]));
         }
         
         /// <remarks/>
@@ -222,11 +217,11 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVehiculosFiltrados", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VehiculosDTO[] GetVehiculosFiltrados(string filtro, string valor) {
+        public AutoConFoto[] GetVehiculosFiltrados(string filtro, string valor) {
             object[] results = this.Invoke("GetVehiculosFiltrados", new object[] {
                         filtro,
                         valor});
-            return ((VehiculosDTO[])(results[0]));
+            return ((AutoConFoto[])(results[0]));
         }
         
         /// <remarks/>
@@ -253,10 +248,10 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVehiculosbyId", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VehiculosDTO GetVehiculosbyId(int Id) {
+        public AutoConFoto GetVehiculosbyId(int Id) {
             object[] results = this.Invoke("GetVehiculosbyId", new object[] {
                         Id});
-            return ((VehiculosDTO)(results[0]));
+            return ((AutoConFoto)(results[0]));
         }
         
         /// <remarks/>
@@ -306,35 +301,6 @@ namespace HuergoMotorsEcommerce.WebService {
             if ((this.GetAccesoriosByModeloCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAccesoriosByModeloCompleted(this, new GetAccesoriosByModeloCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetImagenes", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string GetImagenes(int idVehiculo) {
-            object[] results = this.Invoke("GetImagenes", new object[] {
-                        idVehiculo});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetImagenesAsync(int idVehiculo) {
-            this.GetImagenesAsync(idVehiculo, null);
-        }
-        
-        /// <remarks/>
-        public void GetImagenesAsync(int idVehiculo, object userState) {
-            if ((this.GetImagenesOperationCompleted == null)) {
-                this.GetImagenesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetImagenesOperationCompleted);
-            }
-            this.InvokeAsync("GetImagenes", new object[] {
-                        idVehiculo}, this.GetImagenesOperationCompleted, userState);
-        }
-        
-        private void OnGetImagenesOperationCompleted(object arg) {
-            if ((this.GetImagenesCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetImagenesCompleted(this, new GetImagenesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -633,6 +599,7 @@ namespace HuergoMotorsEcommerce.WebService {
     /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VentasDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AccesoriosDTO))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(VehiculosImagenesDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VehiculosDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(ClientesDTO))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
@@ -651,6 +618,154 @@ namespace HuergoMotorsEcommerce.WebService {
             }
             set {
                 this.idField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class AutoConFoto {
+        
+        private VehiculosDTO vehiculoField;
+        
+        private VehiculosImagenesDTO[] fotosField;
+        
+        /// <remarks/>
+        public VehiculosDTO Vehiculo {
+            get {
+                return this.vehiculoField;
+            }
+            set {
+                this.vehiculoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public VehiculosImagenesDTO[] Fotos {
+            get {
+                return this.fotosField;
+            }
+            set {
+                this.fotosField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class VehiculosDTO : DTOBase {
+        
+        private bool vehiculosField;
+        
+        private string tipoField;
+        
+        private string modeloField;
+        
+        private decimal precioVentaField;
+        
+        private int stockDisponibleField;
+        
+        private string descripcionField;
+        
+        /// <remarks/>
+        public bool Vehiculos {
+            get {
+                return this.vehiculosField;
+            }
+            set {
+                this.vehiculosField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Tipo {
+            get {
+                return this.tipoField;
+            }
+            set {
+                this.tipoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Modelo {
+            get {
+                return this.modeloField;
+            }
+            set {
+                this.modeloField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal PrecioVenta {
+            get {
+                return this.precioVentaField;
+            }
+            set {
+                this.precioVentaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int StockDisponible {
+            get {
+                return this.stockDisponibleField;
+            }
+            set {
+                this.stockDisponibleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                this.descripcionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class VehiculosImagenesDTO : DTOBase {
+        
+        private int idVehiculoField;
+        
+        private byte[] fotoField;
+        
+        /// <remarks/>
+        public int IdVehiculo {
+            get {
+                return this.idVehiculoField;
+            }
+            set {
+                this.idVehiculoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")]
+        public byte[] Foto {
+            get {
+                return this.fotoField;
+            }
+            set {
+                this.fotoField = value;
             }
         }
     }
@@ -806,87 +921,6 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class VehiculosDTO : DTOBase {
-        
-        private bool vehiculosField;
-        
-        private string tipoField;
-        
-        private string modeloField;
-        
-        private decimal precioVentaField;
-        
-        private int stockDisponibleField;
-        
-        private string descripcionField;
-        
-        /// <remarks/>
-        public bool Vehiculos {
-            get {
-                return this.vehiculosField;
-            }
-            set {
-                this.vehiculosField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Tipo {
-            get {
-                return this.tipoField;
-            }
-            set {
-                this.tipoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Modelo {
-            get {
-                return this.modeloField;
-            }
-            set {
-                this.modeloField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public decimal PrecioVenta {
-            get {
-                return this.precioVentaField;
-            }
-            set {
-                this.precioVentaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int StockDisponible {
-            get {
-                return this.stockDisponibleField;
-            }
-            set {
-                this.stockDisponibleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                this.descripcionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void IniciarSesionCompletedEventHandler(object sender, IniciarSesionCompletedEventArgs e);
     
@@ -956,10 +990,10 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public VehiculosDTO[] Result {
+        public AutoConFoto[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((VehiculosDTO[])(this.results[0]));
+                return ((AutoConFoto[])(this.results[0]));
             }
         }
     }
@@ -982,10 +1016,10 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public VehiculosDTO[] Result {
+        public AutoConFoto[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((VehiculosDTO[])(this.results[0]));
+                return ((AutoConFoto[])(this.results[0]));
             }
         }
     }
@@ -1008,10 +1042,10 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public VehiculosDTO Result {
+        public AutoConFoto Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((VehiculosDTO)(this.results[0]));
+                return ((AutoConFoto)(this.results[0]));
             }
         }
     }
@@ -1038,32 +1072,6 @@ namespace HuergoMotorsEcommerce.WebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((AccesoriosDTO[])(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void GetImagenesCompletedEventHandler(object sender, GetImagenesCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetImagenesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetImagenesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
             }
         }
     }

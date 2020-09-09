@@ -15,13 +15,13 @@ namespace HuergoMotorsEcommerce
     {
 
         /// <summary>
-        /// Imagen control.
+        /// PlaceHolder1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Imagen;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolder1;
 
         /// <summary>
         /// lblModelo control.
@@ -51,13 +51,13 @@ namespace HuergoMotorsEcommerce
         protected global::System.Web.UI.WebControls.Label lblstock;
 
         /// <summary>
-        /// Label2 control.
+        /// lblAccesorios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblAccesorios;
 
         /// <summary>
         /// CheckBoxList1 control.

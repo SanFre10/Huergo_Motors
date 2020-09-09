@@ -83,13 +83,13 @@
     <Content Include="Web References\WebService\ClientesDTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\WebService\AutoConFoto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\WebService\VehiculosDTO.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <Content Include="Web References\WebService\VentasDTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>

@@ -16,7 +16,7 @@ namespace HuergoMotorsEcommerce
                 }
                 else
                 {
-                    string[] filtros = { "Modelo", "Tipo" };
+                    string[] filtros = { "Modelo", "Tipo","Precio desde","Precio hasta" };
                     ddlBusqueda.DataSource = filtros;
                     ddlBusqueda.DataBind();
                     Session["DTO"] = null;
@@ -28,8 +28,7 @@ namespace HuergoMotorsEcommerce
             try
             {
                 WebService.WebService ws = new WebService.WebService();
-                Vehiculos2 v = new Vehiculos2();
-                VehiculosDTO[] vehiculos = new VehiculosDTO[] { };
+                AutoConFoto[] vehiculos = new AutoConFoto[] { };
                 if (txFiltro.Text != "")
                 {
                     vehiculos = ws.GetVehiculosFiltrados(ddlBusqueda.SelectedValue, txFiltro.Text);

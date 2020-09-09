@@ -42,10 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoriosDTO.cs" />
+    <Compile Include="AutoConFoto.cs" />
     <Compile Include="CarritoDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
     <Compile Include="DTOBase.cs" />
     <Compile Include="VehiculosDTO.cs" />
+    <Compile Include="VehiculosImagenesDTO.cs" />
     <Compile Include="VendedoresDTO.cs" />
     <Compile Include="VentasAccesoriosDTO.cs" />
     <Compile Include="VentasDTO.cs" />

@@ -95,6 +95,10 @@
       <Project>{177704c3-dde1-422d-9543-d3fe88bc751a}</Project>
       <Name>TP1VentasDatos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TP1VentasNegocio\TP1VentasNegocio.csproj">
+      <Project>{BD495ED8-725E-4744-8E73-E59AD723EE31}</Project>
+      <Name>TP1VentasNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

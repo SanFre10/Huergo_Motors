@@ -57,13 +57,19 @@
       <s:element name="GetVehiculosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosResult" type="tns:ArrayOfVehiculosDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosResult" type="tns:ArrayOfAutoConFoto" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVehiculosDTO">
+      <s:complexType name="ArrayOfAutoConFoto">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="VehiculosDTO" nillable="true" type="tns:VehiculosDTO" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AutoConFoto" nillable="true" type="tns:AutoConFoto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutoConFoto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="tns:VehiculosDTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fotos" type="tns:ArrayOfVehiculosImagenesDTO" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="VehiculosDTO">
@@ -80,6 +86,21 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
+      <s:complexType name="ArrayOfVehiculosImagenesDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehiculosImagenesDTO" nillable="true" type="tns:VehiculosImagenesDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehiculosImagenesDTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DTOBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdVehiculo" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Foto" type="s:base64Binary" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="GetVehiculosFiltrados">
         <s:complexType>
           <s:sequence>
@@ -91,7 +112,7 @@
       <s:element name="GetVehiculosFiltradosResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosFiltradosResult" type="tns:ArrayOfVehiculosDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosFiltradosResult" type="tns:ArrayOfAutoConFoto" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -105,7 +126,7 @@
       <s:element name="GetVehiculosbyIdResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosbyIdResult" type="tns:VehiculosDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiculosbyIdResult" type="tns:AutoConFoto" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -140,20 +161,6 @@
           </s:extension>
         </s:complexContent>
       </s:complexType>
-      <s:element name="GetImagenes">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="idVehiculo" type="s:int" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetImagenesResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetImagenesResult" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
       <s:element name="CrearVenta">
         <s:complexType>
           <s:sequence>
@@ -295,12 +302,6 @@
   <wsdl:message name="GetAccesoriosByModeloSoapOut">
     <wsdl:part name="parameters" element="tns:GetAccesoriosByModeloResponse" />
   </wsdl:message>
-  <wsdl:message name="GetImagenesSoapIn">
-    <wsdl:part name="parameters" element="tns:GetImagenes" />
-  </wsdl:message>
-  <wsdl:message name="GetImagenesSoapOut">
-    <wsdl:part name="parameters" element="tns:GetImagenesResponse" />
-  </wsdl:message>
   <wsdl:message name="CrearVentaSoapIn">
     <wsdl:part name="parameters" element="tns:CrearVenta" />
   </wsdl:message>
@@ -361,10 +362,6 @@
     <wsdl:operation name="GetAccesoriosByModelo">
       <wsdl:input message="tns:GetAccesoriosByModeloSoapIn" />
       <wsdl:output message="tns:GetAccesoriosByModeloSoapOut" />
-    </wsdl:operation>
-    <wsdl:operation name="GetImagenes">
-      <wsdl:input message="tns:GetImagenesSoapIn" />
-      <wsdl:output message="tns:GetImagenesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="CrearVenta">
       <wsdl:input message="tns:CrearVentaSoapIn" />
@@ -440,15 +437,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetAccesoriosByModelo">
       <soap:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImagenes">
-      <soap:operation soapAction="http://tempuri.org/GetImagenes" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -560,15 +548,6 @@
     </wsdl:operation>
     <wsdl:operation name="GetAccesoriosByModelo">
       <soap12:operation soapAction="http://tempuri.org/GetAccesoriosByModelo" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetImagenes">
-      <soap12:operation soapAction="http://tempuri.org/GetImagenes" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Services;
 using TP1VentasDatos;
 using TP1VentasDTOs;
+using TP1VentasNegocio;
 
 namespace Services
 {
@@ -42,41 +44,75 @@ namespace Services
 
         //Busqueda de Vehiculos//
         [WebMethod]
-        public List<VehiculosDTO> GetVehiculos()
+        public List<AutoConFoto> GetVehiculos()
         {
-            return DAOBase<VehiculosDTO>.ReadAll();
+            List<VehiculosDTO> vehiculos = VehiculosDAO.GetVehiculos();
+            List<AutoConFoto> final = new List<AutoConFoto>();
+            foreach (VehiculosDTO v in vehiculos)
+            {
+                List<VehiculosImagenesDTO> imagenes = VehiculosDAO.GetImagenes(v.Id);
+                AutoConFoto auto = new AutoConFoto
+                {
+                    Vehiculo = v,
+                    Fotos = imagenes
+                };
+
+                final.Add(auto);
+            }
+            return final;
+
         }
         [WebMethod]
-        public List<VehiculosDTO> GetVehiculosFiltrados(string filtro, string valor)
+        public List<AutoConFoto> GetVehiculosFiltrados(string filtro, string valor)
         {
-            List<VehiculosDTO> dto = VehiculosDAO.GetVehiculosConFiltro(filtro, valor);
-            return dto;
+            List<VehiculosDTO> vehiculos = VehiculosDAO.GetVehiculos(filtro, valor);
+            List<AutoConFoto> final = new List<AutoConFoto>();
+            foreach (VehiculosDTO v in vehiculos)
+            {
+                List<VehiculosImagenesDTO> imagenes = VehiculosDAO.GetImagenes(v.Id);
+                AutoConFoto auto = new AutoConFoto
+                {
+                    Vehiculo = v,
+                    Fotos = imagenes
+                };
+
+                final.Add(auto);
+            }
+            return final;
         }
 
         //Detalle del Vehiculo//
         [WebMethod]
-        public VehiculosDTO GetVehiculosbyId(int Id)
+        public AutoConFoto GetVehiculosbyId(int Id)
         {
             VehiculosDTO dto = DAOBase<VehiculosDTO>.Read(Id);
-            return dto;
+            List<VehiculosImagenesDTO> imagenes = VehiculosDAO.GetImagenes(dto.Id);
+
+            AutoConFoto auto = new AutoConFoto
+            {
+                Vehiculo = dto,
+                Fotos = imagenes
+            };
+            return auto;
+
         }
         [WebMethod]
         public List<AccesoriosDTO> GetAccesoriosByModelo(string filtro)
         {
             return AccesoriosDAO.GetAccesoriosByModelo(filtro);
         }
-        [WebMethod]
-        public string GetImagenes(int idVehiculo)
-        {
-            byte[] imagen = VehiculosDAO.GetImagenes(idVehiculo);
-            if(imagen != null)
-            {
-                return "data:image/png;base64," + Convert.ToBase64String(imagen);
-            }
-            return "car-icon.png";
+        //[WebMethod]
+        //public string GetImagenes(int idVehiculo)
+        //{
+        //    byte[] imagen = VehiculosDAO.GetImagenes(idVehiculo);
+        //    if(imagen != null)
+        //    {
+        //        return "data:image/png;base64," + Convert.ToBase64String(imagen);
+        //    }
+        //    return "car-icon.png";
             
 
-        }
+        //}
 
         //Carrito//
         [WebMethod]

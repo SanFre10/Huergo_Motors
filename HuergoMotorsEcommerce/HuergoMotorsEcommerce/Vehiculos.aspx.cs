@@ -17,10 +17,10 @@ namespace HuergoMotorsEcommerce
                 {
                     if (!IsPostBack)
                     {
-                        VehiculosDTO[] Vehiculos = new VehiculosDTO[] { };
+                        AutoConFoto[] Vehiculos = new AutoConFoto[] { };
                         if (Session["DTO"] != null)
                         {
-                            Vehiculos = (VehiculosDTO[])Session["DTO"];
+                            Vehiculos = (AutoConFoto[])Session["DTO"];
                         }
                         else
                         {
@@ -48,7 +48,7 @@ namespace HuergoMotorsEcommerce
 
 
 
-        public void CargarDTOs(VehiculosDTO[] vehiculos)
+        public void CargarDTOs(AutoConFoto[] vehiculos)
         {
             try
             {
@@ -57,9 +57,8 @@ namespace HuergoMotorsEcommerce
                     Response.Redirect("Vehiculos.aspx");
                 }
 
-                WebService.WebService ws = new WebService.WebService();
                 //Carga todos los vehiculos disponibles al html
-                foreach (VehiculosDTO v in vehiculos)
+                foreach (AutoConFoto v in vehiculos)
                 {
                     HtmlGenericControl div = new HtmlGenericControl("div");
                     div.Attributes["class"] = "item card mb-3 w-50 mx-auto m-5";
@@ -74,14 +73,22 @@ namespace HuergoMotorsEcommerce
                     HtmlGenericControl imagen = new HtmlGenericControl("img");
                     imagen.Attributes["class"] = "Imagen card-img-top";
                     imagen.Attributes["runat"] = "server";
-                    imagen.Attributes["src"] = ws.GetImagenes(v.Id);
+                    try
+                    {
+                        imagen.Attributes["src"] = "data:image/png;base64," + Convert.ToBase64String(v.Fotos[0].Foto);
+                    }
+                    catch (Exception)
+                    {
+                        imagen.Attributes["src"] = "car-icon.png";
+                    }
+                    
                     imagen.Attributes["style"] = "max-height:360px;";
 
 
 
 
                     HtmlGenericControl link = new HtmlGenericControl("a");
-                    link.Attributes["href"] = "Detalles.aspx?id=" + v.Id;
+                    link.Attributes["href"] = "Detalles.aspx?id=" + v.Vehiculo.Id;
 
                     HtmlGenericControl body = new HtmlGenericControl("div");
                     body.Attributes["class"] = "card-body";
@@ -92,11 +99,11 @@ namespace HuergoMotorsEcommerce
                     HtmlGenericControl modelo = new HtmlGenericControl("h4");
                     modelo.Attributes["class"] = "lblmodelo card-title text-decoration-none";
                     modelo.Attributes["Style"] = "color:black;";
-                    modelo.InnerText = v.Modelo;
+                    modelo.InnerText = v.Vehiculo.Modelo;
 
                     HtmlGenericControl precio = new HtmlGenericControl("p");
                     precio.Attributes["class"] = "lblprecio card-text text-decoration-none";
-                    precio.InnerText = "$ " + v.PrecioVenta.ToString();
+                    precio.InnerText = "$ " + v.Vehiculo.PrecioVenta.ToString();
                     precio.Attributes["Style"] = "color:black;";
 
 

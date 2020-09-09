@@ -119,3 +119,5 @@ D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.csproj.CopyComplete
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.dll
 D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\obj\Debug\Services.pdb
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasNegocio.dll
+D:\User\Desktop\Huergo_Motors\TP1HuergoMotorsVentas\Services\bin\TP1VentasNegocio.pdb

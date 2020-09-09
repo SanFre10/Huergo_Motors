@@ -20,11 +20,11 @@
                     <asp:TextBox ID="txPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Contraseña"></asp:TextBox>
                 </div>
             
-                <asp:Button ID="btnAceptar" CssClass="btn btn-light btn-lg mx-auto d-block" runat="server" Text="Iniciar Sesion" OnClick="btnAceptar_Click"/>
+                <asp:Button ID="btnAceptar" CssClass="btn btn-light btn-lg mx-auto d-block w-50" runat="server" Text="Iniciar Sesion" OnClick="btnAceptar_Click"/>
                 
-                <asp:Button ID="btnRegistrar" runat="server" OnClick="btnRegistrar_Click" Text="Registrarse" CssClass="btn btn-outline-light mx-auto d-block my-3"/>
+                <asp:Button ID="btnRegistrar" runat="server" OnClick="btnRegistrar_Click" Text="Registrarse" CssClass="btn btn-outline-light mx-auto d-block my-3 w-50"/>
                 
-                <asp:LinkButton ID="btnOlvid" runat="server" CssClass="d-block text-black-50">Olvide mi contraseña</asp:LinkButton>
+                <%--<asp:LinkButton ID="btnOlvid" runat="server" CssClass="d-block text-black-50">Olvide mi contraseña</asp:LinkButton>--%>
                 
                 <asp:Label ID="lblMsg" runat="server" Text="" CssClass="h3"></asp:Label>
 

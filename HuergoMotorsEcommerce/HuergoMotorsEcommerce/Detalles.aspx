@@ -3,15 +3,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="mx-auto w-75 mt-5" >
-        <div class="row p-5 rounded-top"  style="background-color:#cb8589;">
-            <asp:Image ID="Imagen" runat="server" class="col-lg-7 col-12 rounded" src="car-icon.png"/>
+        <div class="row p-5 rounded-top"  style="background-color:lightgray;">
+            <div id="carouselExampleIndicators" class="carousel slide col-lg-7 col-12 rounded" data-ride="carousel">
+                <div class="carousel-inner" id="fotos">
+                    <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
             <div class="col-lg-5 col-12">
-                 <div style="background-color:#ca8080;">
+                 <div style="background-color:lightgray;">
                     <asp:Label ID="lblModelo" runat="server" Text="Label" CssClass="d-block text-center font-weight-bold h1"></asp:Label>
                     <asp:Label ID="lblPrecio" runat="server" CssClass="d-block h2 text-center pt-3"></asp:Label>
                     <asp:Label ID="lblstock" runat="server" Text="Label" CssClass="d-block h3 text-center"></asp:Label>
                 </div>
-                <asp:Label ID="Label2" runat="server" Text="Accesorios disponibles" CssClass="d-block text-center pt-3 h4"></asp:Label>
+                <asp:Label ID="lblAccesorios" runat="server" Text="" CssClass="d-block text-center pt-3 h4"></asp:Label>
                 <div class="pt-2 pb-5">
                     <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="mx-auto h5"></asp:CheckBoxList>
                 </div>
@@ -20,7 +32,7 @@
             </div>
 
         </div>
-        <div class="row p-5 rounded-bottom" style="background-color:#ca8080;">
+        <div class="row p-5 rounded-bottom" style="background-color:lightgray;">
             <div class="col-lg-7 col-12">
                 <asp:Label ID="lblDescripcion" runat="server" Text=""></asp:Label>
             </div>
