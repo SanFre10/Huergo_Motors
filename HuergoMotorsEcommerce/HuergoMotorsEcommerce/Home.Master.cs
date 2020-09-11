@@ -63,5 +63,15 @@ namespace HuergoMotorsEcommerce
         {
             Response.Redirect("Historial.aspx");
         }
+
+        protected void btnCarrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Carrito.aspx");
+        }
+
+        protected void btnDatos_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Mis_datos.aspx");
+        }
     }
 }

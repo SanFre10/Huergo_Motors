@@ -37,6 +37,13 @@ namespace TP1VentasDatos
             }
             return dtos;
         }
+        public static List<AccesoriosDTO> GetAccesoriosbyIds(string texto)
+        {
+
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Accesorios WHERE id IN {texto}");
+            return Funciones.DataTable_a_DTO<AccesoriosDTO>(dt);
+
+        }
 
     }
 }

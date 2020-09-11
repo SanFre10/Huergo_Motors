@@ -12,7 +12,7 @@
         <div class="container">
             <form id="form1" runat="server" class="mx-auto text-center rounded w-50" style="background-color:#A2192D;color:white;">
 
-                <img src="Logo.png" class="d-block mx-auto p-3 rounded"/>
+                <img src="Logo.png" width="200" height="150" class="d-block mx-auto p-3 rounded"/>
                 <asp:Label ID="Label3" runat="server" Text="Iniciar Sesion" CssClass="mx-auto text-center h4 font-weight-bold p-2"></asp:Label>
                 <div class="mx-5 my-3">
                     <asp:TextBox ID="txUser" runat="server" CssClass="form-control" placeholder="Usuario"></asp:TextBox>

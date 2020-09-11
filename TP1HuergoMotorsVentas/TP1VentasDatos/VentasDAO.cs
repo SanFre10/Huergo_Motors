@@ -45,7 +45,7 @@ namespace TP1VentasDatos
             DataTable dt = SQLHelper.ObtenerDataTable(query);
             return Funciones.DataTable_a_DTO<VentasDTO>(dt);
         }
-        public static string ExecTransaction(int IdVehiculo,int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios,string obs,decimal tot,int stock)
+        public static string ExecTransaction(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot)
         {
             try
             {
@@ -85,7 +85,8 @@ namespace TP1VentasDatos
                                 IdVentasAccesorios++;
                             }
                             //Resta 1 al stock del vehiculo
-
+                            DataTable dt = SQLHelper.ObtenerDataTable($"select StockDisponible from Vehiculos where id = '{IdVehiculo}'");
+                            int stock = (int)dt.Rows[0]["StockDisponible"] - 1;
                             cmd.CommandText = $"UPDATE Vehiculos SET StockDisponible = {stock} WHERE id = {IdVehiculo}";
                             cmd.ExecuteNonQuery();
 

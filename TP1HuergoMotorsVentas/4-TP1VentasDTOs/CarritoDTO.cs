@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TP1VentasNegocio;
 
 namespace TP1VentasDTOs
 {
     public class CarritoDTO : DTOBase
     {
-        public int IdVehiculo           { get; set; }
-        public List<int> IDsAccesorios  { get; set; }
-
+        public AutoConFoto Vehiculo { get; set; }
+        public List<AccesoriosDTO> Accesorios { get; set; }
 
     }
 }

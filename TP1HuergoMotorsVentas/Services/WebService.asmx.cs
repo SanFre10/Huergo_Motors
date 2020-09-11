@@ -87,7 +87,7 @@ namespace Services
         {
             VehiculosDTO dto = DAOBase<VehiculosDTO>.Read(Id);
             List<VehiculosImagenesDTO> imagenes = VehiculosDAO.GetImagenes(dto.Id);
-
+            
             AutoConFoto auto = new AutoConFoto
             {
                 Vehiculo = dto,
@@ -116,9 +116,9 @@ namespace Services
 
         //Carrito//
         [WebMethod]
-        public string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot, int stock)
+        public string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot)
         {
-            return VentasDAO.ExecTransaction(IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, stock);
+            return VentasDAO.ExecTransaction(IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot);
         }
 
         //Mis Compras//
@@ -130,33 +130,24 @@ namespace Services
 
         //Mis Datos//
         [WebMethod]
-        public ClientesDTO ActualizarUsuario()
+        public ClientesDTO ActualizarUsuario(ClientesDTO cliente)
         {
-            ClientesDTO dtot = new ClientesDTO
-            {
-                Id = 20,
-                Direccion = "hola 123",
-                Email = "Test@test.com",
-                Nombre = "John Doe",
-                Telefono = "12345678"
-            };
-
-            return DAOBase<ClientesDTO>.Update(dtot);
+            return DAOBase<ClientesDTO>.Update(cliente);
         }
-        [WebMethod]
-        public ClientesDTO GetDatosCliente(string cliente)
-        {
-            ClientesDTO dtot = new ClientesDTO
-            {
-                Id = 20,
-                Direccion = "hola 123",
-                Email = "Test@test.com",
-                Nombre = "John Doe",
-                Telefono = "12345678"
-            };
+        //[WebMethod]
+        //public ClientesDTO GetDatosCliente(string cliente)
+        //{
+        //    ClientesDTO dtot = new ClientesDTO
+        //    {
+        //        Id = 20,
+        //        Direccion = "hola 123",
+        //        Email = "Test@test.com",
+        //        Nombre = "John Doe",
+        //        Telefono = "12345678"
+        //    };
 
-            return dtot;
-        }
+        //    return dtot;
+        //}
 
         //
         [WebMethod]
@@ -165,12 +156,22 @@ namespace Services
             return DAOBase<ClientesDTO>.ReadAll();
         }
         [WebMethod]
-        public List<AccesoriosDTO> GetAccesorios()
+        public List<AccesoriosDTO> GetAccesoriosByIds(int[] Ids)
         {
-            return DAOBase<AccesoriosDTO>.ReadAll();
+            string texto = "(";
+            foreach (int id in Ids)
+            {
+                texto += $"{id},";
+            }
+            texto = texto.Remove(texto.Length - 1);
+            texto += ")";
+            return AccesoriosDAO.GetAccesoriosbyIds(texto);
         }
-
-
+        [WebMethod]
+        public CarritoDTO carrito()
+        {
+            return new CarritoDTO();
+        }
 
     }
 }

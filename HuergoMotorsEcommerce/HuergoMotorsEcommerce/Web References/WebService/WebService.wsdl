@@ -170,7 +170,6 @@
             <s:element minOccurs="0" maxOccurs="1" name="dtosAccesorios" type="tns:ArrayOfAccesoriosDTO" />
             <s:element minOccurs="0" maxOccurs="1" name="obs" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="tot" type="s:decimal" />
-            <s:element minOccurs="1" maxOccurs="1" name="stock" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -216,26 +215,16 @@
         </s:complexContent>
       </s:complexType>
       <s:element name="ActualizarUsuario">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="tns:ClientesDTO" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="ActualizarUsuarioResponse">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="ActualizarUsuarioResult" type="tns:ClientesDTO" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDatosCliente">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="GetDatosClienteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetDatosClienteResult" type="tns:ClientesDTO" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -254,16 +243,45 @@
           <s:element minOccurs="0" maxOccurs="unbounded" name="ClientesDTO" nillable="true" type="tns:ClientesDTO" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GetAccesorios">
-        <s:complexType />
-      </s:element>
-      <s:element name="GetAccesoriosResponse">
+      <s:element name="GetAccesoriosByIds">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetAccesoriosResult" type="tns:ArrayOfAccesoriosDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ids" type="tns:ArrayOfInt" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAccesoriosByIdsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccesoriosByIdsResult" type="tns:ArrayOfAccesoriosDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="carrito">
+        <s:complexType />
+      </s:element>
+      <s:element name="carritoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="carritoResult" type="tns:CarritoDTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CarritoDTO">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DTOBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="tns:AutoConFoto" />
+              <s:element minOccurs="0" maxOccurs="1" name="Accesorios" type="tns:ArrayOfAccesoriosDTO" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="IniciarSesionSoapIn">
@@ -320,23 +338,23 @@
   <wsdl:message name="ActualizarUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:ActualizarUsuarioResponse" />
   </wsdl:message>
-  <wsdl:message name="GetDatosClienteSoapIn">
-    <wsdl:part name="parameters" element="tns:GetDatosCliente" />
-  </wsdl:message>
-  <wsdl:message name="GetDatosClienteSoapOut">
-    <wsdl:part name="parameters" element="tns:GetDatosClienteResponse" />
-  </wsdl:message>
   <wsdl:message name="GetClientesSoapIn">
     <wsdl:part name="parameters" element="tns:GetClientes" />
   </wsdl:message>
   <wsdl:message name="GetClientesSoapOut">
     <wsdl:part name="parameters" element="tns:GetClientesResponse" />
   </wsdl:message>
-  <wsdl:message name="GetAccesoriosSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAccesorios" />
+  <wsdl:message name="GetAccesoriosByIdsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccesoriosByIds" />
   </wsdl:message>
-  <wsdl:message name="GetAccesoriosSoapOut">
-    <wsdl:part name="parameters" element="tns:GetAccesoriosResponse" />
+  <wsdl:message name="GetAccesoriosByIdsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccesoriosByIdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="carritoSoapIn">
+    <wsdl:part name="parameters" element="tns:carrito" />
+  </wsdl:message>
+  <wsdl:message name="carritoSoapOut">
+    <wsdl:part name="parameters" element="tns:carritoResponse" />
   </wsdl:message>
   <wsdl:portType name="WebServiceSoap">
     <wsdl:operation name="IniciarSesion">
@@ -375,17 +393,17 @@
       <wsdl:input message="tns:ActualizarUsuarioSoapIn" />
       <wsdl:output message="tns:ActualizarUsuarioSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetDatosCliente">
-      <wsdl:input message="tns:GetDatosClienteSoapIn" />
-      <wsdl:output message="tns:GetDatosClienteSoapOut" />
-    </wsdl:operation>
     <wsdl:operation name="GetClientes">
       <wsdl:input message="tns:GetClientesSoapIn" />
       <wsdl:output message="tns:GetClientesSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <wsdl:input message="tns:GetAccesoriosSoapIn" />
-      <wsdl:output message="tns:GetAccesoriosSoapOut" />
+    <wsdl:operation name="GetAccesoriosByIds">
+      <wsdl:input message="tns:GetAccesoriosByIdsSoapIn" />
+      <wsdl:output message="tns:GetAccesoriosByIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="carrito">
+      <wsdl:input message="tns:carritoSoapIn" />
+      <wsdl:output message="tns:carritoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
@@ -471,15 +489,6 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDatosCliente">
-      <soap:operation soapAction="http://tempuri.org/GetDatosCliente" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetClientes">
       <soap:operation soapAction="http://tempuri.org/GetClientes" style="document" />
       <wsdl:input>
@@ -489,8 +498,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <soap:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
+    <wsdl:operation name="GetAccesoriosByIds">
+      <soap:operation soapAction="http://tempuri.org/GetAccesoriosByIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="carrito">
+      <soap:operation soapAction="http://tempuri.org/carrito" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -582,15 +600,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetDatosCliente">
-      <soap12:operation soapAction="http://tempuri.org/GetDatosCliente" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetClientes">
       <soap12:operation soapAction="http://tempuri.org/GetClientes" style="document" />
       <wsdl:input>
@@ -600,8 +609,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAccesorios">
-      <soap12:operation soapAction="http://tempuri.org/GetAccesorios" style="document" />
+    <wsdl:operation name="GetAccesoriosByIds">
+      <soap12:operation soapAction="http://tempuri.org/GetAccesoriosByIds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="carrito">
+      <soap12:operation soapAction="http://tempuri.org/carrito" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -21,6 +21,7 @@ namespace HuergoMotorsEcommerce
                     {
                         WebService.WebService ws = new WebService.WebService();
                         AutoConFoto vehiculo = ws.GetVehiculosbyId(Convert.ToInt32(Request.QueryString["id"]));
+                        Session["elegido"] = vehiculo;
                         if (vehiculo.Fotos.Length > 0)
                         {
                             foreach (VehiculosImagenesDTO foto in vehiculo.Fotos)
@@ -70,6 +71,7 @@ namespace HuergoMotorsEcommerce
                         }
                         AccesoriosDTO[] accesorios = ws.GetAccesoriosByModelo(vehiculo.Vehiculo.Modelo);
                         CheckBoxList1.DataSource = accesorios;
+                        CheckBoxList1.DataValueField = "Id";
                         CheckBoxList1.DataTextField = "Nombre";
                         CheckBoxList1.DataBind();
                         if(accesorios.Length > 0)
@@ -87,6 +89,46 @@ namespace HuergoMotorsEcommerce
             {
                 throw;
             }
+
+        }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            WebService.WebService ws = new WebService.WebService();
+            List<CarritoDTO> carrito = new List<CarritoDTO>();
+            if (Session["carrito"] != null)
+            {
+                carrito = (List<CarritoDTO>)Session["carrito"];
+            }
+
+            CarritoDTO dto = new CarritoDTO();
+            AutoConFoto vehiculo = (AutoConFoto)Session["elegido"];
+            AccesoriosDTO[] accesorios = { };
+            List<int> list = new List<int>();
+
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected)
+                {
+                    list.Add(Convert.ToInt32(item.Value));
+                }
+            }
+            
+            if (list.Count > 0)
+            {
+                accesorios = ws.GetAccesoriosByIds(list.ToArray());
+            }
+
+            dto.Vehiculo = vehiculo;
+            dto.Accesorios = accesorios;
+
+            carrito.Add(dto);
+            Session["carrito"] = carrito;
+
+
+            Response.Redirect("/Carrito.aspx");
+
+
 
         }
     }

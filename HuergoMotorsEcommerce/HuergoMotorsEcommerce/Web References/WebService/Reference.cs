@@ -48,11 +48,11 @@ namespace HuergoMotorsEcommerce.WebService {
         
         private System.Threading.SendOrPostCallback ActualizarUsuarioOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetDatosClienteOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetClientesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetAccesoriosOperationCompleted;
+        private System.Threading.SendOrPostCallback GetAccesoriosByIdsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback carritoOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -120,13 +120,13 @@ namespace HuergoMotorsEcommerce.WebService {
         public event ActualizarUsuarioCompletedEventHandler ActualizarUsuarioCompleted;
         
         /// <remarks/>
-        public event GetDatosClienteCompletedEventHandler GetDatosClienteCompleted;
-        
-        /// <remarks/>
         public event GetClientesCompletedEventHandler GetClientesCompleted;
         
         /// <remarks/>
-        public event GetAccesoriosCompletedEventHandler GetAccesoriosCompleted;
+        public event GetAccesoriosByIdsCompletedEventHandler GetAccesoriosByIdsCompleted;
+        
+        /// <remarks/>
+        public event carritoCompletedEventHandler carritoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/IniciarSesion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -306,25 +306,24 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CrearVenta", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot, int stock) {
+        public string CrearVenta(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot) {
             object[] results = this.Invoke("CrearVenta", new object[] {
                         IdVehiculo,
                         IdCliente,
                         IdVendedor,
                         dtosAccesorios,
                         obs,
-                        tot,
-                        stock});
+                        tot});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CrearVentaAsync(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot, int stock) {
-            this.CrearVentaAsync(IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, stock, null);
+        public void CrearVentaAsync(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot) {
+            this.CrearVentaAsync(IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, null);
         }
         
         /// <remarks/>
-        public void CrearVentaAsync(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot, int stock, object userState) {
+        public void CrearVentaAsync(int IdVehiculo, int IdCliente, int IdVendedor, AccesoriosDTO[] dtosAccesorios, string obs, decimal tot, object userState) {
             if ((this.CrearVentaOperationCompleted == null)) {
                 this.CrearVentaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCrearVentaOperationCompleted);
             }
@@ -334,8 +333,7 @@ namespace HuergoMotorsEcommerce.WebService {
                         IdVendedor,
                         dtosAccesorios,
                         obs,
-                        tot,
-                        stock}, this.CrearVentaOperationCompleted, userState);
+                        tot}, this.CrearVentaOperationCompleted, userState);
         }
         
         private void OnCrearVentaOperationCompleted(object arg) {
@@ -376,57 +374,30 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ActualizarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ClientesDTO ActualizarUsuario() {
-            object[] results = this.Invoke("ActualizarUsuario", new object[0]);
+        public ClientesDTO ActualizarUsuario(ClientesDTO cliente) {
+            object[] results = this.Invoke("ActualizarUsuario", new object[] {
+                        cliente});
             return ((ClientesDTO)(results[0]));
         }
         
         /// <remarks/>
-        public void ActualizarUsuarioAsync() {
-            this.ActualizarUsuarioAsync(null);
+        public void ActualizarUsuarioAsync(ClientesDTO cliente) {
+            this.ActualizarUsuarioAsync(cliente, null);
         }
         
         /// <remarks/>
-        public void ActualizarUsuarioAsync(object userState) {
+        public void ActualizarUsuarioAsync(ClientesDTO cliente, object userState) {
             if ((this.ActualizarUsuarioOperationCompleted == null)) {
                 this.ActualizarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnActualizarUsuarioOperationCompleted);
             }
-            this.InvokeAsync("ActualizarUsuario", new object[0], this.ActualizarUsuarioOperationCompleted, userState);
+            this.InvokeAsync("ActualizarUsuario", new object[] {
+                        cliente}, this.ActualizarUsuarioOperationCompleted, userState);
         }
         
         private void OnActualizarUsuarioOperationCompleted(object arg) {
             if ((this.ActualizarUsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.ActualizarUsuarioCompleted(this, new ActualizarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public ClientesDTO GetDatosCliente(string cliente) {
-            object[] results = this.Invoke("GetDatosCliente", new object[] {
-                        cliente});
-            return ((ClientesDTO)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetDatosClienteAsync(string cliente) {
-            this.GetDatosClienteAsync(cliente, null);
-        }
-        
-        /// <remarks/>
-        public void GetDatosClienteAsync(string cliente, object userState) {
-            if ((this.GetDatosClienteOperationCompleted == null)) {
-                this.GetDatosClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDatosClienteOperationCompleted);
-            }
-            this.InvokeAsync("GetDatosCliente", new object[] {
-                        cliente}, this.GetDatosClienteOperationCompleted, userState);
-        }
-        
-        private void OnGetDatosClienteOperationCompleted(object arg) {
-            if ((this.GetDatosClienteCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetDatosClienteCompleted(this, new GetDatosClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -458,29 +429,58 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAccesorios", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public AccesoriosDTO[] GetAccesorios() {
-            object[] results = this.Invoke("GetAccesorios", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetAccesoriosByIds", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public AccesoriosDTO[] GetAccesoriosByIds(int[] Ids) {
+            object[] results = this.Invoke("GetAccesoriosByIds", new object[] {
+                        Ids});
             return ((AccesoriosDTO[])(results[0]));
         }
         
         /// <remarks/>
-        public void GetAccesoriosAsync() {
-            this.GetAccesoriosAsync(null);
+        public void GetAccesoriosByIdsAsync(int[] Ids) {
+            this.GetAccesoriosByIdsAsync(Ids, null);
         }
         
         /// <remarks/>
-        public void GetAccesoriosAsync(object userState) {
-            if ((this.GetAccesoriosOperationCompleted == null)) {
-                this.GetAccesoriosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAccesoriosOperationCompleted);
+        public void GetAccesoriosByIdsAsync(int[] Ids, object userState) {
+            if ((this.GetAccesoriosByIdsOperationCompleted == null)) {
+                this.GetAccesoriosByIdsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAccesoriosByIdsOperationCompleted);
             }
-            this.InvokeAsync("GetAccesorios", new object[0], this.GetAccesoriosOperationCompleted, userState);
+            this.InvokeAsync("GetAccesoriosByIds", new object[] {
+                        Ids}, this.GetAccesoriosByIdsOperationCompleted, userState);
         }
         
-        private void OnGetAccesoriosOperationCompleted(object arg) {
-            if ((this.GetAccesoriosCompleted != null)) {
+        private void OnGetAccesoriosByIdsOperationCompleted(object arg) {
+            if ((this.GetAccesoriosByIdsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAccesoriosCompleted(this, new GetAccesoriosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetAccesoriosByIdsCompleted(this, new GetAccesoriosByIdsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/carrito", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CarritoDTO carrito() {
+            object[] results = this.Invoke("carrito", new object[0]);
+            return ((CarritoDTO)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void carritoAsync() {
+            this.carritoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void carritoAsync(object userState) {
+            if ((this.carritoOperationCompleted == null)) {
+                this.carritoOperationCompleted = new System.Threading.SendOrPostCallback(this.OncarritoOperationCompleted);
+            }
+            this.InvokeAsync("carrito", new object[0], this.carritoOperationCompleted, userState);
+        }
+        
+        private void OncarritoOperationCompleted(object arg) {
+            if ((this.carritoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.carritoCompleted(this, new carritoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -597,6 +597,7 @@ namespace HuergoMotorsEcommerce.WebService {
     }
     
     /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(CarritoDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VentasDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(AccesoriosDTO))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(VehiculosImagenesDTO))]
@@ -776,6 +777,96 @@ namespace HuergoMotorsEcommerce.WebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CarritoDTO : DTOBase {
+        
+        private AutoConFoto vehiculoField;
+        
+        private AccesoriosDTO[] accesoriosField;
+        
+        /// <remarks/>
+        public AutoConFoto Vehiculo {
+            get {
+                return this.vehiculoField;
+            }
+            set {
+                this.vehiculoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AccesoriosDTO[] Accesorios {
+            get {
+                return this.accesoriosField;
+            }
+            set {
+                this.accesoriosField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccesoriosDTO : DTOBase {
+        
+        private bool accesoriosField;
+        
+        private string nombreField;
+        
+        private string modeloField;
+        
+        private decimal precioVentaField;
+        
+        /// <remarks/>
+        public bool Accesorios {
+            get {
+                return this.accesoriosField;
+            }
+            set {
+                this.accesoriosField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Modelo {
+            get {
+                return this.modeloField;
+            }
+            set {
+                this.modeloField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal PrecioVenta {
+            get {
+                return this.precioVentaField;
+            }
+            set {
+                this.precioVentaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class VentasDTO : DTOBase {
         
         private bool ventasField;
@@ -859,63 +950,6 @@ namespace HuergoMotorsEcommerce.WebService {
             }
             set {
                 this.totalField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class AccesoriosDTO : DTOBase {
-        
-        private bool accesoriosField;
-        
-        private string nombreField;
-        
-        private string modeloField;
-        
-        private decimal precioVentaField;
-        
-        /// <remarks/>
-        public bool Accesorios {
-            get {
-                return this.accesoriosField;
-            }
-            set {
-                this.accesoriosField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Modelo {
-            get {
-                return this.modeloField;
-            }
-            set {
-                this.modeloField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public decimal PrecioVenta {
-            get {
-                return this.precioVentaField;
-            }
-            set {
-                this.precioVentaField = value;
             }
         }
     }
@@ -1156,32 +1190,6 @@ namespace HuergoMotorsEcommerce.WebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void GetDatosClienteCompletedEventHandler(object sender, GetDatosClienteCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetDatosClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetDatosClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public ClientesDTO Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((ClientesDTO)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void GetClientesCompletedEventHandler(object sender, GetClientesCompletedEventArgs e);
     
     /// <remarks/>
@@ -1208,17 +1216,17 @@ namespace HuergoMotorsEcommerce.WebService {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
-    public delegate void GetAccesoriosCompletedEventHandler(object sender, GetAccesoriosCompletedEventArgs e);
+    public delegate void GetAccesoriosByIdsCompletedEventHandler(object sender, GetAccesoriosByIdsCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAccesoriosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetAccesoriosByIdsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetAccesoriosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetAccesoriosByIdsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -1228,6 +1236,32 @@ namespace HuergoMotorsEcommerce.WebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((AccesoriosDTO[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void carritoCompletedEventHandler(object sender, carritoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class carritoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal carritoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public CarritoDTO Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((CarritoDTO)(this.results[0]));
             }
         }
     }

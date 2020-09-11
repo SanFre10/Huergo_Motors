@@ -10,9 +10,9 @@ namespace TP1VentasNegocio
         {
             return DAOBase<VentasDTO>.ObtenerProximoId();
         }
-        public static string ExecTransaction(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot, int stock)
+        public static string ExecTransaction(int IdVehiculo, int IdCliente, int IdVendedor, List<AccesoriosDTO> dtosAccesorios, string obs, decimal tot)
         {
-            return VentasDAO.ExecTransaction(IdVehiculo,IdCliente,IdVendedor, dtosAccesorios, obs, tot, stock);
+            return VentasDAO.ExecTransaction(IdVehiculo,IdCliente,IdVendedor, dtosAccesorios, obs, tot);
         }
         public static List<VentasDTO> MostrarVentas()
         {
