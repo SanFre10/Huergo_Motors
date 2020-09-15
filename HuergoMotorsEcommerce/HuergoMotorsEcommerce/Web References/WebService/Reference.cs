@@ -345,10 +345,10 @@ namespace HuergoMotorsEcommerce.WebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetVentas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public VentasDTO[] GetVentas(int IdCliente) {
+        public ComprasDTO[] GetVentas(int IdCliente) {
             object[] results = this.Invoke("GetVentas", new object[] {
                         IdCliente});
-            return ((VentasDTO[])(results[0]));
+            return ((ComprasDTO[])(results[0]));
         }
         
         /// <remarks/>
@@ -629,6 +629,189 @@ namespace HuergoMotorsEcommerce.WebService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class ComprasDTO {
+        
+        private VentasDTO ventasField;
+        
+        private AccesoriosDTO[] accesoriosField;
+        
+        /// <remarks/>
+        public VentasDTO Ventas {
+            get {
+                return this.ventasField;
+            }
+            set {
+                this.ventasField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public AccesoriosDTO[] Accesorios {
+            get {
+                return this.accesoriosField;
+            }
+            set {
+                this.accesoriosField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class VentasDTO : DTOBase {
+        
+        private bool ventasField;
+        
+        private System.DateTime fechaField;
+        
+        private string vehiculoField;
+        
+        private string clienteField;
+        
+        private string vendedorField;
+        
+        private string observacionesField;
+        
+        private decimal totalField;
+        
+        /// <remarks/>
+        public bool Ventas {
+            get {
+                return this.ventasField;
+            }
+            set {
+                this.ventasField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime Fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Vehiculo {
+            get {
+                return this.vehiculoField;
+            }
+            set {
+                this.vehiculoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Cliente {
+            get {
+                return this.clienteField;
+            }
+            set {
+                this.clienteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Vendedor {
+            get {
+                return this.vendedorField;
+            }
+            set {
+                this.vendedorField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Observaciones {
+            get {
+                return this.observacionesField;
+            }
+            set {
+                this.observacionesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal Total {
+            get {
+                return this.totalField;
+            }
+            set {
+                this.totalField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class AccesoriosDTO : DTOBase {
+        
+        private bool accesoriosField;
+        
+        private string nombreField;
+        
+        private string modeloField;
+        
+        private decimal precioVentaField;
+        
+        /// <remarks/>
+        public bool Accesorios {
+            get {
+                return this.accesoriosField;
+            }
+            set {
+                this.accesoriosField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Modelo {
+            get {
+                return this.modeloField;
+            }
+            set {
+                this.modeloField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public decimal PrecioVenta {
+            get {
+                return this.precioVentaField;
+            }
+            set {
+                this.precioVentaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class AutoConFoto {
         
         private VehiculosDTO vehiculoField;
@@ -800,156 +983,6 @@ namespace HuergoMotorsEcommerce.WebService {
             }
             set {
                 this.accesoriosField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class AccesoriosDTO : DTOBase {
-        
-        private bool accesoriosField;
-        
-        private string nombreField;
-        
-        private string modeloField;
-        
-        private decimal precioVentaField;
-        
-        /// <remarks/>
-        public bool Accesorios {
-            get {
-                return this.accesoriosField;
-            }
-            set {
-                this.accesoriosField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Modelo {
-            get {
-                return this.modeloField;
-            }
-            set {
-                this.modeloField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public decimal PrecioVenta {
-            get {
-                return this.precioVentaField;
-            }
-            set {
-                this.precioVentaField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.4084.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class VentasDTO : DTOBase {
-        
-        private bool ventasField;
-        
-        private System.DateTime fechaField;
-        
-        private string vehiculoField;
-        
-        private string clienteField;
-        
-        private string vendedorField;
-        
-        private string observacionesField;
-        
-        private decimal totalField;
-        
-        /// <remarks/>
-        public bool Ventas {
-            get {
-                return this.ventasField;
-            }
-            set {
-                this.ventasField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Fecha {
-            get {
-                return this.fechaField;
-            }
-            set {
-                this.fechaField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Vehiculo {
-            get {
-                return this.vehiculoField;
-            }
-            set {
-                this.vehiculoField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Cliente {
-            get {
-                return this.clienteField;
-            }
-            set {
-                this.clienteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Vendedor {
-            get {
-                return this.vendedorField;
-            }
-            set {
-                this.vendedorField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Observaciones {
-            get {
-                return this.observacionesField;
-            }
-            set {
-                this.observacionesField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public decimal Total {
-            get {
-                return this.totalField;
-            }
-            set {
-                this.totalField = value;
             }
         }
     }
@@ -1154,10 +1187,10 @@ namespace HuergoMotorsEcommerce.WebService {
         }
         
         /// <remarks/>
-        public VentasDTO[] Result {
+        public ComprasDTO[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((VentasDTO[])(this.results[0]));
+                return ((ComprasDTO[])(this.results[0]));
             }
         }
     }

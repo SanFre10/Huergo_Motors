@@ -190,13 +190,19 @@
       <s:element name="GetVentasResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="GetVentasResult" type="tns:ArrayOfVentasDTO" />
+            <s:element minOccurs="0" maxOccurs="1" name="GetVentasResult" type="tns:ArrayOfComprasDTO" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfVentasDTO">
+      <s:complexType name="ArrayOfComprasDTO">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="VentasDTO" nillable="true" type="tns:VentasDTO" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ComprasDTO" nillable="true" type="tns:ComprasDTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ComprasDTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Ventas" type="tns:VentasDTO" />
+          <s:element minOccurs="0" maxOccurs="1" name="Accesorios" type="tns:ArrayOfAccesoriosDTO" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="VentasDTO">

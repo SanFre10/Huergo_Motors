@@ -69,12 +69,12 @@
   <ItemGroup>
     <Content Include="Carrito.aspx" />
     <Content Include="Detalles.aspx" />
+    <Content Include="Historial.aspx" />
     <Content Include="Home.Master" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Historial.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Mis_datos.aspx" />
     <Content Include="Registro.aspx" />
@@ -91,13 +91,13 @@
     <Content Include="Web References\WebService\CarritoDTO.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Web References\WebService\ComprasDTO.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\WebService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Web References\WebService\VentasDTO.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\WebService\WebService.disco" />
     <Content Include="Web.config" />
     <None Include="Web References\WebService\WebService.wsdl" />

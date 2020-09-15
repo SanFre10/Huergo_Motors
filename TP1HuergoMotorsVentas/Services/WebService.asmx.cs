@@ -123,9 +123,25 @@ namespace Services
 
         //Mis Compras//
         [WebMethod]
-        public List<VentasDTO> GetVentas(int IdCliente)
+        public List<ComprasDTO> GetVentas(int IdCliente)
         {
-            return VentasDAO.ObtenerConCliente(IdCliente);
+            List<VentasDTO> ventas = VentasDAO.ObtenerConCliente(IdCliente);
+
+            List<ComprasDTO> compras = new List<ComprasDTO>();
+
+            foreach (VentasDTO venta in ventas)
+            {
+                List<AccesoriosDTO> accesorios = AccesoriosDAO.GetAccesoriosbyVenta(venta.Id);
+
+                ComprasDTO c = new ComprasDTO();
+
+                c.Accesorios = accesorios;
+                c.Ventas = venta;
+
+                compras.Add(c);
+            }
+
+            return compras;
         }
 
         //Mis Datos//

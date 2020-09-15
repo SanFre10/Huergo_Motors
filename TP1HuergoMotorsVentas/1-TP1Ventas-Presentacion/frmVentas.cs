@@ -159,12 +159,11 @@ namespace TP1Ventas
                 int IdVehiculo = dtosVehiculos[cbVehiculos.SelectedIndex].Id;
                 int IdCliente = dtosCliente[cbClientes.SelectedIndex].Id;
                 int IdVendedor = dtosVendedores[cbVendedor.SelectedIndex].Id;
-                int stock = dtosVehiculos[cbVehiculos.SelectedIndex].StockDisponible - 1;
                 string obs = txtObservaciones.Text;
                 decimal tot = Convert.ToDecimal(lblTotal.Text);
 
                 MessageBox.Show(TP1VentasNegocio.VentasNegocio.ExecTransaction(
-                    IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot, stock)
+                    IdVehiculo, IdCliente, IdVendedor, dtosAccesorios, obs, tot)
                     , "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

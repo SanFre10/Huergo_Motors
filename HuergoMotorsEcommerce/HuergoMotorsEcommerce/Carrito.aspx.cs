@@ -30,6 +30,7 @@ namespace HuergoMotorsEcommerce
         }
         protected void Cargar_Cards()
         {
+            PlaceHolder1.Controls.Clear();
             List<CarritoDTO> carrito = (List<CarritoDTO>)Session["carrito"];
             if (carrito != null && carrito.Count > 0)
             {
@@ -37,7 +38,7 @@ namespace HuergoMotorsEcommerce
                 {
 
                     HtmlGenericControl card = new HtmlGenericControl("div");
-                    card.Attributes["class"] = "card mb-3";
+                    card.Attributes["class"] = "card mb-3 mx-auto";
                     card.Attributes["style"] = "max-width: 540px";
 
                     HtmlGenericControl row = new HtmlGenericControl("div");
@@ -125,6 +126,7 @@ namespace HuergoMotorsEcommerce
                 Button comprar = new Button();
                 comprar.Text = "Comprar";
                 comprar.CssClass = "btn btn-danger";
+                comprar.Attributes["style"] = "margin-left:45%";
                 comprar.Click += new EventHandler(Comprar_Click);
                 PlaceHolder1.Controls.Add(comprar);
             }
@@ -175,6 +177,7 @@ namespace HuergoMotorsEcommerce
         }
         protected void Comprar_Click(object sender, EventArgs e)
         {
+            
             WebService.WebService ws = new WebService.WebService();
             List<CarritoDTO> carrito = (List<CarritoDTO>)Session["carrito"];
             ClientesDTO cliente = (ClientesDTO)Session["usuario"];
@@ -184,7 +187,8 @@ namespace HuergoMotorsEcommerce
                 
             }
             carrito.Clear();
-            
+            Session["carrito"] = null;
+            Cargar_Cards();
 
         }
 

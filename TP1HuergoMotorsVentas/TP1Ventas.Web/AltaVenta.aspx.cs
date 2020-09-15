@@ -162,11 +162,10 @@ namespace TP1Ventas.Web
                 int IdVehiculo = dtosVehiculos[ddModelo.SelectedIndex].Id;
                 int IdCliente = dtosCliente[ddClientes.SelectedIndex].Id;
                 int IdVendedor = dtosVendedores[ddVendedores.SelectedIndex].Id;
-                int stock = dtosVehiculos[ddModelo.SelectedIndex].StockDisponible - 1;
                 string obs = txObservaciones.Text;
                 decimal tot = Convert.ToDecimal(txTotal.Text);
 
-                lblError.Text = (VentasNegocio.ExecTransaction(IdVehiculo,IdCliente,IdVendedor, dtosAccesorios, obs, tot, stock));
+                lblError.Text = (VentasNegocio.ExecTransaction(IdVehiculo,IdCliente,IdVendedor, dtosAccesorios, obs, tot));
 
                 Response.Redirect("Home.aspx");
             }

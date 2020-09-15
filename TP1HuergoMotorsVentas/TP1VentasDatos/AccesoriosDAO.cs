@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TP1Ventas;
 using System.Globalization;
+using TP1VentasDTOs.DTOs;
 
 namespace TP1VentasDatos
 {
@@ -41,6 +42,14 @@ namespace TP1VentasDatos
         {
 
             DataTable dt = SQLHelper.ObtenerDataTable($"SELECT * FROM Accesorios WHERE id IN {texto}");
+            return Funciones.DataTable_a_DTO<AccesoriosDTO>(dt);
+
+        }
+
+        public static List<AccesoriosDTO> GetAccesoriosbyVenta(int id)
+        {
+
+            DataTable dt = SQLHelper.ObtenerDataTable($"SELECT accesorios.id,accesorios.nombre,accesorios.modelo,accesorios.precioventa FROM accesorios left join ventasaccesorios on accesorios.id = ventasaccesorios.idaccesorio WHERE ventasaccesorios.idventa = {id}");
             return Funciones.DataTable_a_DTO<AccesoriosDTO>(dt);
 
         }

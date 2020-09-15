@@ -45,6 +45,7 @@
     <Compile Include="AutoConFoto.cs" />
     <Compile Include="CarritoDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
+    <Compile Include="ComprasDTO.cs" />
     <Compile Include="DTOBase.cs" />
     <Compile Include="VehiculosDTO.cs" />
     <Compile Include="VehiculosImagenesDTO.cs" />
