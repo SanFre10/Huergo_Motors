@@ -28,7 +28,7 @@
                     <asp:CheckBoxList ID="CheckBoxList1" runat="server" CssClass="mx-auto h5" ></asp:CheckBoxList>
                 </div>
                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar al carrito" CssClass="btn btn-danger mx-auto d-block w-50" OnClick="btnAgregar_Click" />
-
+                <asp:Label ID="lblmsg" runat="server" Text="" CssClass="text-danger h2 mx-auto d-block w-75"></asp:Label>
             </div>
 
         </div>

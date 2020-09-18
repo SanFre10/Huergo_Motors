@@ -122,11 +122,29 @@ namespace HuergoMotorsEcommerce
             dto.Vehiculo = vehiculo;
             dto.Accesorios = accesorios;
 
-            carrito.Add(dto);
-            Session["carrito"] = carrito;
+            bool existe = false;
+            foreach(CarritoDTO car in carrito)
+            {
+                if(car.Vehiculo.Vehiculo.Id == dto.Vehiculo.Vehiculo.Id)
+                {
+                    existe = true;
+                    break;
+                }
+            }
+            if(existe == false)
+            {
+                carrito.Add(dto);
+                Session["carrito"] = carrito;
+                Response.Redirect("/Carrito.aspx");
+            }
+            else
+            {
+                lblmsg.Text = "El auto ya existe en el carrito";
+            }
 
 
-            Response.Redirect("/Carrito.aspx");
+
+            
 
 
 

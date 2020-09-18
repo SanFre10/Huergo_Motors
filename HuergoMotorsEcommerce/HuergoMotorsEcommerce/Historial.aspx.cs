@@ -59,7 +59,7 @@ namespace HuergoMotorsEcommerce
 
                                     HtmlGenericControl p = new HtmlGenericControl("p");
                                     p.Attributes["class"] = "card-text";
-                                    p.InnerHtml = ac.PrecioVenta.ToString();
+                                    p.InnerHtml = "$ " + ac.PrecioVenta.ToString();
 
 
 

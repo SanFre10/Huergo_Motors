@@ -4,12 +4,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <div>
-        <asp:Label ID="Label1" runat="server" Text="Historial de compras"></asp:Label>
-        <asp:Button ID="btnMenu" runat="server" Text="Menu" />
-
-        <asp:PlaceHolder ID="Compras" runat="server"></asp:PlaceHolder>
-    </div>
+    
+    <asp:PlaceHolder ID="Compras" runat="server"></asp:PlaceHolder>
+    
 
 
 </asp:Content>

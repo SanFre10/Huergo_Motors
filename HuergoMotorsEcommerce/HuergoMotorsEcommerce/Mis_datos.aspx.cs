@@ -31,21 +31,29 @@ namespace HuergoMotorsEcommerce
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
-            WebService.WebService ws = new WebService.WebService();
-            ClientesDTO usuario = (ClientesDTO)Session["usuario"];
-            ClientesDTO dto = new ClientesDTO
+            if (txNombre.Text != "" && txDireccion.Text != "" && txTelefono.Text != "" && txEmail.Text != "" && txUsuario.Text != "" && txContraseña.Text != "")
             {
-                Id = usuario.Id,
-                Nombre = txNombre.Text,
-                Direccion = txDireccion.Text,
-                Telefono = txTelefono.Text,
-                Email = txEmail.Text,
-                Usuario = txUsuario.Text,
-                Contraseña = txContraseña.Text
-            };
 
-            ws.ActualizarUsuario(dto);
-            Session["usuario"] = dto;
+                WebService.WebService ws = new WebService.WebService();
+                ClientesDTO usuario = (ClientesDTO)Session["usuario"];
+                ClientesDTO dto = new ClientesDTO
+                {
+                    Id = usuario.Id,
+                    Nombre = txNombre.Text,
+                    Direccion = txDireccion.Text,
+                    Telefono = txTelefono.Text,
+                    Email = txEmail.Text,
+                    Usuario = txUsuario.Text,
+                    Contraseña = txContraseña.Text
+                };
+
+                ws.ActualizarUsuario(dto);
+                Session["usuario"] = dto;
+            }
+            else
+            {
+                lblMsg.Text = "Complete todos los campos!";
+            }
 
 
         }
